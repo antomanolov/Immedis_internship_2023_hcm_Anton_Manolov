@@ -16,10 +16,12 @@
     text-decoration: none;
     list-style: none;
     border: none;
-    font-family: Arial, Helvetica, sans-serif;
+    
 }
 
-
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
 .navbar {
@@ -28,6 +30,10 @@
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #E8E8E8;
+}
+
+i {
+    color: white;
 }
 
 
@@ -70,30 +76,59 @@
     cursor: pointer;
 }
 
+.menu a:hover {
+    color: black;
+}
+
 .content {
-    width: 10rem;
+    width: 12rem;
     position: fixed;
     top: 3.6rem;
     bottom: 0;
     background-color: var(--background);
-    padding: 20px;
-
+    padding:0 10px;
 }
 
 .content li {
-    margin: 10px 0;
+    margin: 2rem 0;
 }
 
 .content a {
     color: var(--font-color);
+    margin-left: 2px;
 }
 
+.content a:hover {
+    color: var(--button);
+}
+
+.content i {
+    font-size: 0.85rem;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+}
+
+.exit {
+    position: absolute;
+    bottom: 1rem;
+}
+
+
+/* MIDDLE PART */
 .middle {
     display: grid;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
     gap: 1rem;
     height: 100vh;
-    margin-left: 12rem;
+    margin-left: 14rem;
     margin-top: 2rem;
     margin-right: 2rem;
 }
