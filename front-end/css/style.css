@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Ubuntu:wght@300;400;500;700&display=swap');
 :root {
     --background: #333333;
+    --background-secondary: #ece9ec ;
     --button: #B3E0FF;
+    --button-secondary: #D8D8D8;
     --font-color: white;
     --secondary-color: #f8f5f5;
     --error: #FF6B6B;
@@ -21,8 +23,8 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--button);
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--background-secondary);
 }
 
 
@@ -31,7 +33,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: var(--font-color);
+    background-color: var(--background);
     border-bottom: 1px solid var(--background);
 }
 
@@ -72,7 +74,7 @@ i {
 }
 
 .menu a {
-    color: var(--background);
+    color: var(--font-color);
     font-size: 1.1rem;
     border: none;
     padding: 0.52rem 1rem;
@@ -80,7 +82,7 @@ i {
 }
 
 .menu a:hover {
-    color: black;
+    color: var(--button);
 }
 
 .content {
@@ -129,24 +131,22 @@ i {
 .middle {
    
     display: grid;
-    grid-template-columns: repeat(3, minmax(400px, 400px));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2.2rem;
     height: 100vh;
-    margin-left: 28rem;
+    margin-left: 20rem;
     margin-top: 2rem;
     margin-right: 2rem;
 }
 
 .box {
     background-color: var(--font-color);
-    box-shadow: -0.1rem 0.01rem 1.2rem 0.01rem var(--background);
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
     border-radius: 1.3rem;
     height: 400px;
 }
 
-.box h2{
-    font-style: italic;
-}
+
 
 .box-title {
     display: flex;
@@ -156,22 +156,24 @@ i {
     border-bottom: 2px dotted var(--background);
 }
 
+/* box 1 Attendance */
 .checking {
     display: flex;
     justify-content: space-around;
     padding-top: 1rem;
+    margin-top: 1rem;
 }
 
 .check-in {
     padding: 0.3rem 1.6rem;
     border-radius: 10px;
-    background-color: green;
+    background-color: var(--button);
 }
 
 .check-out {
     padding: 0.3rem 1.3rem;
     border-radius: 10px;
-    background-color: var(--error);
+    background-color: var(--button-secondary);
 }
 
 .checking a,
@@ -191,6 +193,7 @@ i {
 .break-container {
     display: flex;
     justify-content: space-around;
+    margin-top: 4rem;
 }
 
 .break-cnt {
@@ -206,12 +209,40 @@ i {
     margin-top: 1rem;
     padding: 0.3rem 2.3rem;
     border-radius: 10px;
-    background-color: green;
+    background-color: var(--button);
 }
 
 .end-break {
     margin-top: 1rem;
     padding: 0.3rem 1.5rem;
     border-radius: 10px;
-    background-color: var(--error);
+    background-color: var(--button-secondary);
+}
+
+/* box 2 colleagues  */
+.dep-col {
+    
+    margin-top: 1rem;
+}
+
+.dep-col > li{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 5px;
+    margin-left: 1rem;
+}
+
+.online-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.online {
+    background-color: green;
+}
+
+.offline {
+    background-color: var(--button-secondary);
 }
