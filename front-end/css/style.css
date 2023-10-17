@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Ubuntu:wght@300;400;500;700&display=swap');
 :root {
     --background: #333333;
-    --background-secondary: #ece9ec ;
+    --background-secondary: #ece9ec;
+    --green-status: green;
     --button: #B3E0FF;
     --button-secondary: #D8D8D8;
     --font-color: white;
@@ -225,7 +226,7 @@ i {
     margin-top: 1rem;
 }
 
-.dep-col > li{
+.dep-col > li {
     display: flex;
     align-items: center;
     gap: 0.3rem;
@@ -240,9 +241,56 @@ i {
 }
 
 .online {
-    background-color: green;
+    background-color: var(--green-status);
 }
 
 .offline {
     background-color: var(--button-secondary);
+}
+
+/* box 3, 4 requests, announcements */
+
+.requests {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.request-box {
+    background-color: var(--background-secondary);
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 150px;
+    margin-left: 6px;
+    margin-right: 6px;
+    
+    
+}
+
+.request-box > p {
+    margin-top: 5px;
+    margin-left: 1rem;
+}
+
+.request-top {
+    color:var(--green-status);
+}
+
+/* box 5 paychecks */
+
+.paycheck-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.paycheck {
+    border: 1px solid black;
+    height: 50px;
+    margin: 10px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.month-salary {
+    display: flex;
+    justify-content: space-around;
 }
