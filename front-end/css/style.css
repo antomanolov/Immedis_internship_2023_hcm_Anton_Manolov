@@ -135,7 +135,7 @@ i {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2.2rem;
     height: 100vh;
-    margin-left: 20rem;
+    margin-left: 14rem;
     margin-top: 2rem;
     margin-right: 2rem;
 }
@@ -252,14 +252,14 @@ i {
 
 .requests {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
 }
 
 .request-box {
     background-color: var(--background-secondary);
     margin-top: 10px;
     border-radius: 10px;
-    height: 150px;
+    height: 160px;
     margin-left: 6px;
     margin-right: 6px;
     
@@ -315,5 +315,5 @@ i {
     height: 150px;
     text-align: center;
 }
-
+/* #TODO make the navbar sticky */
 /* box 7, 8 reviews, tasks */
