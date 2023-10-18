@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Ubuntu:wght@300;400;500;700&display=swap');
+:root {
+    --background: #333333;
+    --background-secondary: #ece9ec;
+    --green-status: green;
+    --button: #B3E0FF;
+    --button-secondary: #D8D8D8;
+    --font-color: white;
+    --secondary-color: #f8f5f5;
+    --error: #FF6B6B;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--background-secondary);
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--background);
+}
+
+i {
+    color: white;
+}
+
+
+
+.logo {
+    display: inline-block;
+   
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    display: none;
+}
+
+.searchbar input {
+    padding: 10px;
+    width: 40%;
+}
+
+.searchbar button {
+    background-color: #555;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.menu{
+    display: flex;
+    margin-right: 1rem;
+}
+
+.menu a {
+    color: var(--font-color);
+    font-size: 1.1rem;
+    border: none;
+    padding: 0.52rem 1rem;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    color: var(--button);
+}
+
+.content {
+    width: 12rem;
+    position: fixed;
+    top: 3.6rem;
+    bottom: 0;
+    background-color: var(--background);
+    padding:0 10px;
+}
+
+.content li {
+    margin: 2rem 0;
+}
+
+.content a {
+    color: var(--font-color);
+    margin-left: 2px;
+}
+
+.content a:hover {
+    color: var(--button);
+}
+
+.content i {
+    font-size: 0.85rem;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+}
+
+.exit {
+    position: absolute;
+    bottom: 1rem;
+}
