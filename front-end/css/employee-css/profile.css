@@ -77,6 +77,39 @@
     height: 3rem;
     border-bottom: 2px dotted var(--background);
 }
+/* header */
+
+.header {
+    background-color: var(--button);
+}
+.img {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--font-color);
+    margin: 0.5rem auto;
+}
+
+.img img{
+    width: 50px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.header-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.header-info p {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
 
 /* basic info, work info */
 
@@ -120,4 +153,33 @@
     padding: 10px;
     border-radius: 10px;
     font-size: 1.1rem;
+}
+
+/* completed tasks */
+
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    margin-left: 2.6rem;
+}
+
+.task {
+    margin-top: 0.5rem;
+    width: 300px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: var(--button);
+    border-color: none;
+    box-shadow: -0.06rem 0.01rem 0.4rem 0.01rem var(--background);
+}
+
+.task p {
+    margin-top: 10px;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+}
+
+.grey-text {
+    color: var(--background);
+    font-style: italic;
 }
