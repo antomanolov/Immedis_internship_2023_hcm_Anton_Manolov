@@ -248,7 +248,7 @@ i {
     background-color: var(--button-secondary);
 }
 
-/* box 3, 4 requests, announcements */
+/* box 3, 4, 8 requests, announcements, tasks */
 
 .requests {
     display: grid;
@@ -275,7 +275,7 @@ i {
     color:var(--green-status);
 }
 
-/* box 5 paychecks */
+/* box 5, 7 paychecks, reviews */
 
 .paycheck-grid {
     display: grid;
@@ -316,4 +316,7 @@ i {
     text-align: center;
 }
 /* #TODO make the navbar sticky */
-/* box 7, 8 reviews, tasks */
+/* box 8 tasks */
+.deadline {
+    padding-top: 10px;
+}
