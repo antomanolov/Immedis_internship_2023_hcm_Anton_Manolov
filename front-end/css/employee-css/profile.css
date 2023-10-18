@@ -6,48 +6,118 @@
     margin-left: 14rem;
     display: grid;
     grid-template-areas: 
-    "about about skills skills"
-    "work work other other"
-    "tasks tasks tasks tasks";
+    "header header header header header"
+    "about skills skills other other"
+    "work skills skills other other"
+    "tasks tasks tasks tasks tasks";
+}
+
+.about-me, 
+.skills, 
+.work-info, 
+.other-info,
+.completed-tasks,
+.header {
+    border-radius: 10px;
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+    background-color: var(--font-color);
+    border-color: none;
+}
+
+.header {
+    grid-area: header;
+    height: 10rem;
 }
 
 .about-me {
+    margin-top: 1rem;
     grid-area: about;
     height: 12rem;
-    border: 1px solid red;
+    
 }
 
 .skills {
-    height: 12rem;
+    margin-top: 1rem;
+    height: 25rem;
     grid-area: skills;
-    border: 1px solid red;
     margin-left: 2rem;
 }
 
 .work-info {
-    height: 15rem;
+    height: 12rem;
     margin-top: 1rem;
     grid-area: work;
-    border: 1px solid red;
+    
 }
 
 .other-info {
     margin-top: 1rem;
     margin-left:2rem;
-    height: 15rem;
+    height: 25rem;
     grid-area: other;
-    border: 1px solid red;
+    
 }
 
 .completed-tasks {
     margin-top: 1rem;
-    height: 26rem;
+    margin-bottom: 1rem;
+    height: 20rem;
     grid-area: tasks;
-    border: 1px solid red;
+    
 }
 
 .section-label {
     font-size: 1.7rem;
     margin-top: 0.5rem;
     text-align: center;
+    color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+
+/* basic info, work info */
+
+.about-me-couples {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0; /* Add spacing between each couple (adjust as needed) */
+}
+
+.about-me-couples p {
+    padding: 2px;
+    font-size: 1.3rem;
+}
+.ml {
+    margin-left: 1rem;
+}
+
+.mr {
+    margin-right: 1rem;
+}
+
+/* skills, soft skills */
+
+.skill-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 60px);
+    margin: 1.2rem 2rem;
+    row-gap: 1rem;
+    column-gap: 0.5rem;
+    
+}
+
+.skill{
+    
+    background-color: var(--button);
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
 }
