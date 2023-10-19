@@ -37,15 +37,39 @@
     border-bottom: 2px dotted var(--background);
 }
 
+.section-label-review {
+    font-size: 1.1rem;
+    margin-right: 0.2rem;
+    text-align: right;
+    color: var(--background);
+    border-bottom: 2px dotted var(--background);
+    
+}
+
+.section-label-review1{
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--background);
+    background-color: var(--button);
+    border-radius: 10px 10px 0 0 ;
+}
+
 .performance-grid > div > h2 {
     text-align: right;
     margin-right: 1rem;
 }
 
 .perf-rows {
+    margin-top: 0.3rem;
     margin-left: 1rem;
     margin-bottom: 0.2rem;
     font-size: 1.1rem;
+}
+
+.points {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 2rem;
 }
 
 /* .yearly {
@@ -64,20 +88,30 @@
    
 } */
 
-.bonus-grid {
+.reviews-bonus-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     margin-top: 2rem;
+    gap: 2rem;
+}
+.reviews-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bonus-flex {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     
 }
 
-.bonus {
-    width: 60%;
+.bonus,
+.review {
     border-radius: 10px;
     background-color: var(--font-color);
     height: 200px;
-    align-self: center;
     margin-bottom: 1rem;
     box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
 }
