@@ -1,0 +1,57 @@
+@import url("/front-end/css/base.css");
+.middle {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.2rem;
+    height: 100vh;
+    margin-left: 14rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+.box {
+    background-color: var(--font-color);
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+    border-radius: 1.3rem;
+    height: 400px;
+}
+
+
+
+.box-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+
+
+
+.request-box {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    
+}
+
+.request-box > p {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-left: 1rem;
+}
+
+.request-top {
+    color:var(--green-status);
+}
+
+
+
+
+.btn {
+    padding-top: 1rem;
+    margin-left: 1rem;
+}
+
+#status {
+    margin-top: 2rem;
+}
