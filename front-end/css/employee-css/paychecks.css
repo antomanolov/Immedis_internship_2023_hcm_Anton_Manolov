@@ -1,2 +1,57 @@
 @import url(/front-end/css/base.css);
 
+.paychecks-flex {
+    margin-top: 2rem;
+    margin-left: 14rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.paycheck {
+    height: 22rem;
+    background-color: var(--font-color);
+    border-radius: 10px;
+    width: 50%;
+    align-self: center;
+    margin-bottom: 1rem;
+}
+
+.paycheck p{
+    font-size: 1.2rem;
+}
+
+.section-label {
+    font-size: 1.7rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+.pay-info {
+    text-align: right;
+    margin-top: 0.5rem;
+    margin-right: 2rem;
+    font-size: 1.3rem;
+    color: var(--green-status)
+}
+
+.pay-label {
+    color: var(--green-status);
+    
+}
+
+.pay-double {
+    display: flex;
+    width: 50%;
+    margin: 0.5rem auto;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--button-secondary);
+    
+}
+
