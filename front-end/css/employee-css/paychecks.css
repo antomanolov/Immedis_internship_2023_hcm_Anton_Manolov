@@ -16,6 +16,7 @@
     width: 50%;
     align-self: center;
     margin-bottom: 1rem;
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
 }
 
 .paycheck p{

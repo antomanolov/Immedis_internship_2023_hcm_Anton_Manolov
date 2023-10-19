@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front-end/css/employee-css/profile.css">
+    <link rel="stylesheet" href="/front-end/css/employee-css/leave-request.css">
     <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
     <title>HCM</title>
 </head>
@@ -67,7 +67,26 @@
     </div>
     <!-- end of base html -->
     <div class="middle">
-        
+        <form>
+            <h1 class="title">Leave Request</h1>
+            <input type="text" id="text-input" name="text-input" placeholder="Reason for leave">
+            <input type="number" id="number-input" name="number-input" placeholder="Number of days">
+            <label for="from-date">From Date:</label>
+            <input type="date" id="from-date" name="from-date">
+    
+            <label for="to-date">To Date:</label>
+            <input type="date" id="to-date" name="to-date">
+            <select id="select-input" name="select-input" placeholder="Select Dropdown">
+                <option value="" disabled selected>Select leave type</option>
+                <option value="option1">Vacation</option>
+                <option value="option2">Academic</option>
+                <option value="option3">Sick</option>
+            </select>
+            <textarea id="textarea-input" name="textarea-input" placeholder="Other info"></textarea>
+            <div class="submit-button">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
