@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front-end/css/hr(admin)-css/add-employee.css">
+    <link rel="stylesheet" href="/front-end/css/hr(admin)-css/add-review.css">
     <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
     <title>HCM</title>
 </head>
@@ -84,51 +84,26 @@
 
     <div class="middle">
         <form>
-            <h1 class="title">Add Employee</h1>
-            <input type="text" id="text-input" name="text-input" placeholder="First Name">
-            <input type="text" id="text-input" name="text-input" placeholder="Last Name">
-            <input type="email" name="" id="" placeholder="Login Email">
-            <input type="text" id="text-input" name="text-input" placeholder="Telephone Number">
-            <input type="text" id="text-input" name="text-input" placeholder="Location">
-            <label for="date-of-birth">Date of birth:</label>
-            <input type="date" id="date-of-birth" name="date-of-birth">
-            <label for="hire-date">Hire date:</label>
-            <input type="date" id="hire-date" name="hire-date">
-            <select id="select-input" name="select-input" placeholder="Select Department">
-                <option value="" disabled selected>Select Role</option>
-                <option value="option1">HR</option>
-                <option value="option2">Employee</option>
-                
-            </select>
-            <select id="select-input" name="select-input" placeholder="Select Department">
-                <option value="" disabled selected>Gender</option>
-                <option value="option1">Male</option>
-                <option value="option2">Female</option>
-                <option value="option3">Gender fluid</option>
-                <option value="option4">Gender neutral</option>
-            </select>
-            <select id="select-input" name="select-input" placeholder="Select Department">
-                <option value="" disabled selected>Seniority</option>
-                <option value="option1">Junior</option>
-                <option value="option2">Mid</option>
-                <option value="option3">Senior</option>
-            </select>
-            <select id="select-input" name="select-input" placeholder="Select Department">
+            <h1 class="title">Add Review</h1>
+            <select id="select-input" name="select-input" placeholder="Select Dropdown">
                 <option value="" disabled selected>Select Department</option>
-                <option value="option1">Vacation</option>
-                <option value="option2">Academic</option>
-                <option value="option3">Sick</option>
+                <option value="option1">IT</option>
+                <option value="option2">Accountant</option>
+                <option value="option3">Management</option>
             </select>
-            <select id="select-input" name="select-input" placeholder="Select Job Title">
-                <option value="" disabled selected>Select Job Title</option>
-                <option value="option1">Vacation</option>
-                <option value="option2">Academic</option>
-                <option value="option3">Sick</option>
+            <select id="select-input" name="select-input" placeholder="Select Dropdown">
+                <option value="" disabled selected>Select Employee</option>
+                <option value="option1">Tonkata</option>
+                <option value="option2">Mars</option>
+                <option value="option3">Tzonio</option>
             </select>
-            <input type="password" name="" id="" placeholder="Input Password">
-            <input type="password" name="" id="" placeholder="Repeat Password">
+            
+            <input type="number" id="number-input" name="number-input" placeholder="Points of 10">
+            <textarea id="textarea-input" name="textarea-input" placeholder="Feedback"></textarea>
+            <textarea id="textarea-input" name="textarea-input" placeholder="Goals Achieved"></textarea>
+            <textarea id="textarea-input" name="textarea-input" placeholder="To Improve"></textarea>
             <div class="submit-button">
-                <button type="submit">ADD</button>
+                <button type="submit">Submit Review</button>
             </div>
         </form>
     </div>
