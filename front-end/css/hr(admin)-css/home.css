@@ -65,3 +65,56 @@
 .li-dep a:hover{
     color: var(--error);
 }
+
+/* Employees on leave and Employees requests tables */
+.employee-table {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    height: 400px;
+    background-color: var(--font-color);
+}
+
+.table-cols {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 1rem auto;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+.box-title1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+}
+
+.header-info {
+    width: 40%;
+}
+
+.header-type {
+    width: 20%;
+}
+
+.header-from,
+.header-to {
+    width: 15%;
+}
+
+
