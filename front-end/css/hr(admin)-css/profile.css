@@ -1,0 +1,8 @@
+@import url("../base.css");
+
+.middle {
+    gap: 2.2rem;
+    margin-left: 14rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
