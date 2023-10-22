@@ -3,6 +3,76 @@
 .middle {
     gap: 2.2rem;
     margin-left: 14rem;
-    margin-top: 2rem;
     margin-right: 2rem;
+}
+
+.profile-dep {
+    text-align: center;
+    color: var(--background);
+    background-image: linear-gradient(to right, var(--button) , var(--background-secondary));
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5rem;
+}
+
+.profile {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+    height: 4rem;
+    border-bottom: 1px dotted var(--button-secondary);
+}
+
+/* each profile */
+
+.name-img {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--font-color);
+}
+
+.img img{
+    width: 20px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+.edit-del-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.edit-del-btns a {
+    color: var(--background);
+}
+
+.edit,
+.delete,
+.view {
+    padding: 5px 20px;
+    border-radius: 10px;
+    
+}
+
+.edit,
+.view {
+    background-color: var(--button);
+}
+
+.delete {
+    background-color: var(--button-secondary);
 }
