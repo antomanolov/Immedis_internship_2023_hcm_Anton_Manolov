@@ -1,0 +1,85 @@
+@import url("/front-end/css/base.css");
+
+.middle {
+    gap: 2.2rem;
+    margin-left: 14rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    /* border: 1px solid red; */
+}
+
+.department-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    gap: 2.2rem;
+}
+
+
+.box {
+    background-color: var(--font-color);
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+    border-radius: 1.3rem;
+    height: 400px;
+}
+
+.box-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+
+.review-month {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--button-secondary);
+}
+
+.box > p {
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+
+/* edit/delete buttons */
+
+.edit-del-btns {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+    
+}
+
+h3 a{
+    color: var(--background);
+}
+
+h3 a:hover {
+    color: var(--button-secondary);
+}
+
+.points {
+    margin-top: 0.5rem;
+}
+
+.edit-del-btns a {
+    color: var(--background);
+}
+
+.edit,
+.delete {
+    padding: 10px 30px;
+    border-radius: 10px;
+    
+}
+
+.edit {
+    background-color: var(--button);
+}
+
+.delete {
+    background-color: var(--button-secondary);
+}

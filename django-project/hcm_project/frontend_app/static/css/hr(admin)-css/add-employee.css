@@ -1,0 +1,8 @@
+@import url("/front-end/css/employee-css/leave-request.css");
+
+form {
+
+    width: 50rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}

@@ -1,0 +1,193 @@
+@import url("/front-end/css/base.css");
+
+/* MIDDLE PART */
+.middle {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.2rem;
+    height: 100vh;
+    margin-left: 14rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+.box {
+    background-color: var(--font-color);
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+    border-radius: 1.3rem;
+    height: 400px;
+}
+
+
+
+.box-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+
+/* box 1 Attendance */
+.checking {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.check-in {
+    padding: 0.3rem 1.6rem;
+    border-radius: 10px;
+    background-color: var(--button);
+}
+
+.check-out {
+    padding: 0.3rem 1.3rem;
+    border-radius: 10px;
+    background-color: var(--button-secondary);
+}
+
+.checking a,
+.break-container a, div {
+    font-size: 1.2rem;
+    color: var(--background);
+}
+
+.clock {
+    display: flex;
+    padding-top: 1rem;
+    justify-content: center;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 1.2rem;
+}
+
+.break-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+}
+
+.break-cnt {
+    padding: 0.3rem 1.9rem;
+    border-radius: 10px;
+    background-color: var(--error);
+    display: flex;
+    gap: 10px;
+    margin-left: 2rem;
+}
+
+.break {
+    margin-top: 1rem;
+    padding: 0.3rem 2.3rem;
+    border-radius: 10px;
+    background-color: var(--button);
+}
+
+.end-break {
+    margin-top: 1rem;
+    padding: 0.3rem 1.5rem;
+    border-radius: 10px;
+    background-color: var(--button-secondary);
+}
+
+/* box 2 colleagues  */
+.dep-col {
+    
+    margin-top: 1rem;
+}
+
+.dep-col > li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 5px;
+    margin-left: 1rem;
+}
+
+.online-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.online {
+    background-color: var(--green-status);
+}
+
+.offline {
+    background-color: var(--button-secondary);
+}
+
+/* box 3, 4, 8 requests, announcements, tasks */
+
+.requests {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+
+.request-box {
+    background-color: var(--background-secondary);
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 160px;
+    margin-left: 6px;
+    margin-right: 6px;
+    
+    
+}
+
+.request-box > p {
+    margin-top: 5px;
+    margin-left: 1rem;
+}
+
+.request-top {
+    color:var(--green-status);
+}
+
+/* box 5, 7 paychecks, reviews */
+
+.paycheck-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.paycheck {
+    border: 1px solid black;
+    height: 50px;
+    margin: 10px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.month-salary {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* box 6 leave ballance */
+
+.leaves-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+}
+
+.leave > img {
+    width: 5rem;
+}
+
+.leave-type{
+    margin-bottom: 10px;
+}
+
+.leave {
+    margin-top: 1rem;
+    height: 150px;
+    text-align: center;
+}
+
+/* box 8 tasks */
+.deadline {
+    padding-top: 10px;
+}

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block custom_css %}{% endblock %}
+    <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
+
+    <title>HCM</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            
+            <img src="" alt="">
+        </div>
+       
+        <div class="menu">
+            <a href="/front-end/hr(admin)-html/add-employee.html" class="btn">+Add Employee</a>
+            <a href="/front-end/hr(admin)-html/add-review.html" class="btn">+Add Review</a>
+            <a href="/front-end/hr(admin)-html/add-task.html" class="btn">+Add Task</a>
+            <a href="/front-end/hr(admin)-html/submit-paycheck.html" class="btn">+Submit Paycheck</a>
+            <!-- <a href="" class="btn">Sign In</a> -->
+            <a href="" class="btn">Sign Out</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="content">
+            <ul>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-house"></i>
+                        <a href="/front-end/hr(admin)-html/index.html">Home</a>
+                    </div>
+                </li>
+               
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-medal"></i>
+                        <a href="/front-end/hr(admin)-html/performance.html"></i>Performance</a>
+                    </div>
+                </li>
+             
+                
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-list"></i>
+                        <a href="/front-end/hr(admin)-html/reviews.html"></i>Reviews</a>
+                    </div>
+                    
+                </li>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-users"></i>
+                        <a href="../hr(admin)-html/profiles.html"></i>Profiles</a>
+                    </div>
+                    
+                </li>
+                
+                <li>
+                    <div class="sidebar-item exit">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <a href="#"></i>Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% block content %}
+    <div class="middle">
+        
+    </div>
+    {% endblock content %}
+</body>
+</html>

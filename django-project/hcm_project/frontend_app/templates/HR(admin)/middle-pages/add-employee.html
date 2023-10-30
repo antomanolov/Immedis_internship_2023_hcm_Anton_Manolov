@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/front-end/css/hr(admin)-css/add-employee.css">
+    <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
+    <title>HCM</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            
+            <img src="" alt="">
+        </div>
+        <div class="searchbar">
+            <input type="text" placeholder="Search...">
+            <button class="btn">Search</button>
+        </div>
+        <div class="menu">
+            <a href="/front-end/hr(admin)-html/add-employee.html" class="btn">+Add Employee</a>
+            <a href="/front-end/hr(admin)-html/add-review.html" class="btn">+Add Review</a>
+            <a href="/front-end/hr(admin)-html/add-task.html" class="btn">+Add Task</a>
+            <a href="/front-end/hr(admin)-html/submit-paycheck.html" class="btn">+Submit Paycheck</a>
+            <!-- <a href="" class="btn">Sign In</a> -->
+            <a href="" class="btn">Sign Out</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="content">
+            <ul>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-house"></i>
+                        <a href="/front-end/hr(admin)-html/index.html">Home</a>
+                    </div>
+                </li>
+               
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-medal"></i>
+                        <a href="/front-end/hr(admin)-html/performance.html"></i>Performance</a>
+                    </div>
+                </li>
+                
+               
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-list"></i>
+                        <a href="/front-end/hr(admin)-html/reviews.html"></i>Reviews</a>
+                    </div>
+                    
+                </li>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-users"></i>
+                        <a href="../hr(admin)-html/profiles.html"></i>Profiles</a>
+                    </div>
+                    
+                </li>
+                
+                <li>
+                    <div class="sidebar-item exit">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <a href="#"></i>Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="middle">
+        <form>
+            <h1 class="title">Add Employee</h1>
+            <input type="text" id="text-input" name="text-input" placeholder="First Name">
+            <input type="text" id="text-input" name="text-input" placeholder="Last Name">
+            <input type="email" name="" id="" placeholder="Login Email">
+            <input type="text" id="text-input" name="text-input" placeholder="Telephone Number">
+            <input type="text" id="text-input" name="text-input" placeholder="Location">
+            <label for="date-of-birth">Date of birth:</label>
+            <input type="date" id="date-of-birth" name="date-of-birth">
+            <label for="hire-date">Hire date:</label>
+            <input type="date" id="hire-date" name="hire-date">
+            <select id="select-input" name="select-input" placeholder="Select Department">
+                <option value="" disabled selected>Select Role</option>
+                <option value="option1">HR</option>
+                <option value="option2">Employee</option>
+                
+            </select>
+            <select id="select-input" name="select-input" placeholder="Select Department">
+                <option value="" disabled selected>Gender</option>
+                <option value="option1">Male</option>
+                <option value="option2">Female</option>
+                <option value="option3">Gender fluid</option>
+                <option value="option4">Gender neutral</option>
+            </select>
+            <select id="select-input" name="select-input" placeholder="Select Department">
+                <option value="" disabled selected>Seniority</option>
+                <option value="option1">Junior</option>
+                <option value="option2">Mid</option>
+                <option value="option3">Senior</option>
+            </select>
+            <select id="select-input" name="select-input" placeholder="Select Department">
+                <option value="" disabled selected>Select Department</option>
+                <option value="option1">Vacation</option>
+                <option value="option2">Academic</option>
+                <option value="option3">Sick</option>
+            </select>
+            <select id="select-input" name="select-input" placeholder="Select Job Title">
+                <option value="" disabled selected>Select Job Title</option>
+                <option value="option1">Vacation</option>
+                <option value="option2">Academic</option>
+                <option value="option3">Sick</option>
+            </select>
+            <input type="password" name="" id="" placeholder="Input Password">
+            <input type="password" name="" id="" placeholder="Repeat Password">
+            <div class="submit-button">
+                <button type="submit">ADD</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

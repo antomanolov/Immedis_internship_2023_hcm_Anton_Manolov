@@ -1,0 +1,120 @@
+@import url("../base.css");
+
+.middle {
+    gap: 2.2rem;
+    margin-left: 14rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    
+}
+
+.department-boxes {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(300px, 1fr));
+    gap: 2.2rem;
+}
+
+
+.box {
+    background-color: var(--font-color);
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+    border-radius: 1.3rem;
+    height: 400px;
+}
+
+.box-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+
+.dep-col {
+    
+    margin-top: 1rem;
+}
+
+.dep-col > li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 5px;
+    margin-left: 1rem;
+}
+
+.online-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.online {
+    background-color: var(--green-status);
+}
+
+.offline {
+    background-color: var(--button-secondary);
+}
+
+.li-dep a {
+    color: var(--background);
+}
+
+.li-dep a:hover{
+    color: var(--error);
+}
+
+/* Employees on leave and Employees requests tables */
+.employee-table {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    height: 400px;
+    background-color: var(--font-color);
+}
+
+.table-cols {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 1rem auto;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+.box-title1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+}
+
+.header-info {
+    width: 40%;
+}
+
+.header-type {
+    width: 20%;
+}
+
+.header-from,
+.header-to {
+    width: 15%;
+}
+
+

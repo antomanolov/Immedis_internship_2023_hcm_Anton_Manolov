@@ -1,0 +1,117 @@
+@import url(/front-end/css/base.css);
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    margin-left: 14rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+}
+
+
+.performance-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.yearly,
+.monthly,
+.awards,
+.improvements-list {
+    height: 200px;
+    border-radius: 10px;
+    background-color: var(--button);
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+}
+
+.section-label {
+    font-size: 1.7rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+
+.section-label-review {
+    font-size: 1.1rem;
+    margin-right: 0.2rem;
+    text-align: right;
+    color: var(--background);
+    border-bottom: 2px dotted var(--background);
+    
+}
+
+.section-label-review1{
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--background);
+    background-color: var(--button);
+    border-radius: 10px 10px 0 0 ;
+}
+
+.performance-grid > div > h2 {
+    text-align: right;
+    margin-right: 1rem;
+}
+
+.perf-rows {
+    margin-top: 0.3rem;
+    margin-left: 1rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.points {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* .yearly {
+
+}
+
+.monthly {
+   
+}
+
+.awards {
+   
+}
+
+.improvements-list {
+   
+} */
+
+.reviews-bonus-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+.reviews-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bonus-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+}
+
+.bonus,
+.review {
+    border-radius: 10px;
+    background-color: var(--font-color);
+    height: 200px;
+    margin-bottom: 1rem;
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+}
