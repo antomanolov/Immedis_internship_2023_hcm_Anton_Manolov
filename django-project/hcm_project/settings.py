@@ -31,6 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # django rest framework app
+    'rest_framework',
+    
+    # hcm project apps
+    'hcm_project.frontend_app',
+    'hcm_project.bff_api',
+    'hcm_project.backend_api'
 ]
 
 MIDDLEWARE = [
