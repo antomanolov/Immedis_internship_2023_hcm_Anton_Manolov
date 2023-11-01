@@ -7,7 +7,6 @@ from hcm_project.backend_api.appuser import AppUser
 from hcm_project.backend_api.models.app_models import Attendance, LeaveBallance, LeaveHistory, LeaveRequest, Payroll, PerformanceReview, Task
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
 
-#TODO add the rest of the fields 
 
 class CustomChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
@@ -45,6 +44,9 @@ class CustomAdmin(UserAdmin):
             return ('date_joined', 'last_login', 'email',  'last_profile_edit', 'date_of_hire')
         return ()
 
+
+class LeaveBalanceAdmin(admin.ModelAdmin):
+    readonly_fields = ('employee',)
 # Custom User admin panel
 admin.site.register(AppUser, CustomAdmin)
 
@@ -52,7 +54,7 @@ admin.site.register(AppUser, CustomAdmin)
 admin.site.register(Department)
 admin.site.register(JobTitle)
 admin.site.register(Payroll)
-admin.site.register(LeaveBallance)
+admin.site.register(LeaveBallance, LeaveBalanceAdmin)
 admin.site.register(LeaveRequest)
 admin.site.register(Attendance)
 admin.site.register(PerformanceReview)

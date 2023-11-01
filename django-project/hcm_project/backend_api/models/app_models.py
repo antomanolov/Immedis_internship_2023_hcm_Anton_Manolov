@@ -63,6 +63,9 @@ class LeaveBallance(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self) -> str:
+        return f'Leave ballance for {self.employee} with ID:{self.employee.pk}'
+
 class LeaveRequest(models.Model):
     #TODO if have more time make validation for requesting no more days than the
     # days left of every leave type!

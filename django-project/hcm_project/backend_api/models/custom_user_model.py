@@ -48,6 +48,8 @@ class CustomUserModel(AbstractUser):
     email = models.EmailField(
         unique=True,
     )
+
+    username = None
     
     first_name = models.CharField(
         max_length=NAME_MAX_CHARS,
