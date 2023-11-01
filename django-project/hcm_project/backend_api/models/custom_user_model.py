@@ -1,11 +1,32 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from hcm_project.backend_api.models2 import Department, JobTitle
 
 
+class Department(models.Model):
+    #TODO if have more time make validation for only alpha in name
+    DEP_MAX_CHARS = 50
+
+    name = models.CharField(
+        max_length=DEP_MAX_CHARS,
+    )
+
+    about = models.TextField()
+    def __str__(self) -> str:
+        return self.name
+
+
+class JobTitle(models.Model):
+    TITLE_MAX_CHARS = 50
+    #TODO if have more time make validation for only alpha in name
+    title = models.CharField(
+        max_length=TITLE_MAX_CHARS,
+    )
+
+    def __str__(self) -> str:
+        return self.title
 
 class CustomUserModel(AbstractUser):
-    NAME_MAX_CHARS = 50
+    NAME_MAX_CHARS = 51
     TELEPHONE_MAX_CHARS = 15
     LOCATION_MAX_CHARS = 100
     GENDERS = [
@@ -14,7 +35,7 @@ class CustomUserModel(AbstractUser):
         ('GF', 'Gender-fluid'),
         ('NB', 'Non-binary'),
     ]
-    GENDER_MAX_CHARS = len(max(el for _, el in GENDERS))
+    GENDER_MAX_CHARS = max(len(el) for _, el in GENDERS)
 
     SENIORITY_LEVELS = [
         ('REG', 'Regular'),
@@ -22,7 +43,7 @@ class CustomUserModel(AbstractUser):
         ('MID', 'Middle'),
         ('SR', 'Senior'),
     ]
-    SENIORITY_MAX_CHARS = len(max(el for _, el in SENIORITY_LEVELS))
+    SENIORITY_MAX_CHARS = max(len(el) for _, el in SENIORITY_LEVELS)
 
     email = models.EmailField(
         unique=True,
@@ -101,3 +122,6 @@ class CustomUserModel(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ('username', )
+
+    def __str__(self):
+        return self.get_full_name()
