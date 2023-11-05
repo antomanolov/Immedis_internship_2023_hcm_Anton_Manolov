@@ -26,25 +26,26 @@
             </select>
             <select  name="gender" placeholder="Gender">
                 <option value="" disabled selected>Gender</option>
-                <option value="option1">Male</option>
-                <option value="option2">Female</option>
-                <option value="option3">Gender fluid</option>
-                <option value="option4">Gender neutral</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Gender-fluid">Gender fluid</option>
+                <option value="Non-binary">Gender neutral</option>
             </select>
             <select name="seniority" placeholder="Seniority">
                 <option value="" disabled selected>Seniority</option>
-                <option value="option1">Junior</option>
-                <option value="option1">Regular</option>
-                <option value="option2">Mid</option>
-                <option value="option3">Senior</option>
+                <option value="Junior">Junior</option>
+                <option value="Regular">Regular</option>
+                <option value="Middle">Mid</option>
+                <option value="Senior">Senior</option>
             </select>
            
             
-            <input type="password" name="password"  placeholder="Input Password" autocomplete='off'>
-            <input type="password" name="password2"  placeholder="Repeat Password" autocomplete='off'>
+            <input type="password" name="password"  placeholder="Input Password" autocomplete='on'>
+            <input type="password" name="password2"  placeholder="Repeat Password" autocomplete='on'>
             <div class="submit-button">
                 <button type="submit">Add Employee</button>
             </div>
+            {% csrf_token %}
         </form>
     </div>
 

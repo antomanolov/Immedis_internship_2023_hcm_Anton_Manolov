@@ -21,10 +21,25 @@ class EmployeeSerializer(serializers.ModelSerializer):
             'last_login', 'is_superuser','is_staff',
             'is_active','date_joined', 'groups', 'user_permissions'
             )
-
+    
     def create(self, validated_data):
         user = super().create(validated_data)
         user.set_password(user.password)
         user.save()
-
         return user
+
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+    
+    def validate(self, data):
+        email = data.get('email')
+        password = data.get('password')
+        user = AppUser.objects.filter(email=email).first()
+        
+        if user and user.check_password(password):
+            data['user'] = user
+        else:
+            raise serializers.ValidationError("Invalid email or password.")
+
+        return data

@@ -69,6 +69,7 @@ document.getElementById('registration-form').addEventListener('submit', function
     event.preventDefault();
         if(validateForm()) {
             const formData = new FormData(this);
+            const csrfToken = formData.get('csrfmiddlewaretoken');
             const userData = {};
             formData.forEach((value, key) => {
                 if (key != 'password2'){
@@ -76,7 +77,15 @@ document.getElementById('registration-form').addEventListener('submit', function
                 }
            
             });
-            console.log(userData)
+        fetch('/bff/api/add-user/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken.toString(),
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            })
+        .then (response => console.log(response.json()))
         }
         
         

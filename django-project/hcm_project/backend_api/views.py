@@ -1,14 +1,12 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.hashers import make_password, check_password
-
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
 from hcm_project.backend_api.appuser import AppUser
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
-from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer
+from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, UserLoginSerializer
 
 class DepartmentEmployeeList(APIView):
     def get(self, request):
@@ -38,22 +36,25 @@ class JobTitlesList(APIView):
     
 
 class RegisterView(generics.CreateAPIView):
-    queryset = AppUser.objects.all()
-    serializer_class = EmployeeSerializer
+    def create(self, request, *args, **kwargs):
+        serializer = EmployeeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class LoginView(APIView):
-    def post(self, request):
-        email = request.data.get('email')
-        raw_pass = request.data.get('password')
-        print(raw_pass)
+class LoginView(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
         
-        # user = authenticate(request,username=email, password=password)
-       
-        # if user is not None:
-        #     login(request, user)  # Login the user
-        #     token = Token.objects.get_or_create(user=user)
-        #     return Response({'token': token.key}, status=status.HTTP_200_OK)
-        # else:
-        return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
+        serializer = UserLoginSerializer(data=request.data, context={'request': request})
+        
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'email': user.email
+        })
 
