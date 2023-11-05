@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     
     # django rest framework app
     'rest_framework',
-    
+    'rest_framework.authtoken',
+
     # hcm project apps
     'hcm_project.backend_api'
 ]
@@ -48,6 +49,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'hcm_project.urls'
 

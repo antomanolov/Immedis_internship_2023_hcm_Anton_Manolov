@@ -30,18 +30,18 @@ class CustomUserModel(AbstractUser):
     TELEPHONE_MAX_CHARS = 15
     LOCATION_MAX_CHARS = 100
     GENDERS = [
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('GF', 'Gender-fluid'),
-        ('NB', 'Non-binary'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Gender-fluid', 'Gender-fluid'),
+        ('Non-binary', 'Non-binary'),
     ]
     GENDER_MAX_CHARS = max(len(el) for _, el in GENDERS)
 
     SENIORITY_LEVELS = [
-        ('REG', 'Regular'),
-        ('JR', 'Junior'),
-        ('MID', 'Middle'),
-        ('SR', 'Senior'),
+        ('Regular', 'Regular'),
+        ('Junior', 'Junior'),
+        ('Middle', 'Middle'),
+        ('Senior', 'Senior'),
     ]
     SENIORITY_MAX_CHARS = max(len(el) for _, el in SENIORITY_LEVELS)
 
