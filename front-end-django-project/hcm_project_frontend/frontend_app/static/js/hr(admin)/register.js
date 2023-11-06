@@ -82,10 +82,28 @@ document.getElementById('registration-form').addEventListener('submit', function
                 headers: {
                     'X-CSRFToken': csrfToken.toString(),
                     'Content-Type': 'application/json',
+                    
                 },
+                mode:'cors',
+                cache:'no-cache',
                 body: JSON.stringify(userData),
             })
-        .then (response => console.log(response.json()))
+        .then (response => {
+            
+            if (response.status === 201) {
+                // Successful response
+                alert('Employee created');
+                window.location.href = '/';
+            } else if (response.status === 403) {
+                alert('Something');
+            } else {
+                alert('The email must be unique! User with this email is existing!');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        
         }
         
         

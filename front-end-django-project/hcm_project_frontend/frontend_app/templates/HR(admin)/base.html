@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block custom_css %}{% endblock %}
     <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
+    <script src="{% static "js/hr(admin)/logout.js" %}" defer></script>
 
     <title>HCM</title>
 </head>
 <body>
     <div class="navbar">
         <div class="logo">
-            
+            <h4 class='wellcome'></h4>
             <img src="" alt="">
         </div>
        
@@ -22,7 +23,7 @@
             <a href="/front-end/hr(admin)-html/add-task.html" class="btn">+Add Task</a>
             <a href="/front-end/hr(admin)-html/submit-paycheck.html" class="btn">+Submit Paycheck</a>
             <!-- <a href="" class="btn">Sign In</a> -->
-            <a href="" class="btn">Sign Out</a>
+            <a href="#" class="btn logout-btn">Sign Out</a>
         </div>
     </div>
 
@@ -68,7 +69,7 @@
             </ul>
         </div>
     </div>
-
+    {% csrf_token %}
     {% block content %}
     <div class="middle">
         

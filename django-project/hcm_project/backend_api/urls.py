@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from hcm_project.backend_api.views import DepartmentEmployeeList, JobTitlesList, LoginView, RegisterView, get_user_info
+from hcm_project.backend_api.views import DepartmentEmployeeList, JobTitlesList, LoginView, RegisterView, get_user_info, logout
 
 
 urlpatterns = [
@@ -10,6 +10,7 @@ urlpatterns = [
         path('job-titles/', JobTitlesList.as_view(), name='job titles api'),
         path('create-employee/', RegisterView.as_view(), name='register'),
         path('login/', LoginView.as_view(), name='login'),
+        path('logout/', logout),
         
     ])),
 

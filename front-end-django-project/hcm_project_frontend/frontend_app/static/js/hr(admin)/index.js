@@ -1,18 +1,4 @@
 const depBoxes = document.querySelector('.department-boxes')
-const token = localStorage.getItem('authToken');
-console.log(token)
-fetch('/bff/api/current-user', {
-    method: 'GET',
-    headers: {
-        'Authorization': `Token ${token}`,
-        
-    },
-    // for the headers to work 
-    // properly when you add new header must put mode and cache!
-    mode: 'cors',
-    cache: 'no-cache',
-})
-    .then(response => console.log(response))
 
 
 fetch('/bff/api/departments/')

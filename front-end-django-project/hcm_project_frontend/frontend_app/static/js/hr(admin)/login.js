@@ -21,7 +21,7 @@ document.getElementById("login-form").addEventListener("submit", function (event
             
             localStorage.setItem('authToken', data.token);
 
-            console.log('Login successful')
+            window.location.href = '/';
             
         } else {
             // Handle login failure

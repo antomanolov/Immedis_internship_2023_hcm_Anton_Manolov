@@ -12,7 +12,6 @@ def get_departments(request):
     if response.status_code == 200:
         data = response.json()
         return JsonResponse(data, safe=False)
-    
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
 
 
@@ -35,25 +34,32 @@ def get_current_user(request):
         return JsonResponse(data=data, safe=False)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
 
+def logout_view(request):
+    backend_url = 'http://localhost:8000/api/core/logout/'
+    response = requests.post(backend_url, headers=request.headers)
+    if response.status_code == 200:
+        data = response.json()
+        return JsonResponse(data=data, safe=False)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
 class RegisterView(APIView):
     def post(self,request):
-        
-        backend_api_url = 'http://localhost:8000/api/core/create-employee/'  # Replace with the actual URL of your Backend API login endpoint
+        backend_api_url = 'http://localhost:8000/api/core/create-employee/'  
         response = requests.post(backend_api_url, data=request.body, headers=request.headers)
+        print(response.status_code)
         if response.status_code == 201:
-            return Response({'success': 'Successfully created new employee'}, status=status.HTTP_201_CREATED)
-        return Response({'error': 'Invalid email or password'}, status=status.HTTP_400_BAD_REQUEST)
+            data = response.json()
+            return Response(data, status=status.HTTP_201_CREATED)
+        return Response(data=response.json(), status=status.HTTP_400_BAD_REQUEST)
 
 class LoginView(APIView):
     def post(self, request):
-        print(request)
         data = request.data
-        backend_api_url = 'http://localhost:8000/api/core/login/'  # Replace with the actual URL of your Backend API login endpoint
+        backend_api_url = 'http://localhost:8000/api/core/login/'  
         response = requests.post(backend_api_url, data=json.dumps(data), headers=request.headers)
         print(response.status_code)
         if response.status_code == 200:
             token = response.json().get('token')
             return Response({'token': token}, status=status.HTTP_200_OK)
         else:
-            
             return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
