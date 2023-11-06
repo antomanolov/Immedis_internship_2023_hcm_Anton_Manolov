@@ -46,7 +46,7 @@ class LoginView(ObtainAuthToken):
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def get_user_info(request):
+def get_logged_user_info(request):
     user = request.user
     user_info = {
         'email': user.email,
@@ -55,6 +55,18 @@ def get_user_info(request):
     }
     
     return Response(user_info, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def get_user_info(request, pk):
+    
+    try:
+        user = AppUser.objects.get(pk=pk)
+        serializer = EmployeeSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except AppUser.DoesNotExist:
+        return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
 # logout and revoke the token of current user
 @api_view(['POST'])
@@ -70,6 +82,7 @@ def logout(request):
         except Token.DoesNotExist:
             return Response({'message':'No token to revoke'}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'message':'Invalid or missing auth token'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class DepartmentEmployeeList(APIView):

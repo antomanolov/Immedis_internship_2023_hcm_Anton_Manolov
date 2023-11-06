@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from hcm_project_frontend.bff_api.views import RegisterView, get_current_user, get_departments, LoginView, get_job_titles, logout_view
+from hcm_project_frontend.bff_api.views import RegisterView, get_current_user, get_departments, LoginView, get_job_titles, get_user, logout_view
 
 
 urlpatterns = [
@@ -10,6 +10,7 @@ urlpatterns = [
         path('add-user/', RegisterView.as_view()),
         path('login/', LoginView.as_view()),
         path('current-user/', get_current_user),
+        path('get-user/', get_user),
         path('logout/', logout_view),
     ]))
 ]

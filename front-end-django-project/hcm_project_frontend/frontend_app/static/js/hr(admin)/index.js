@@ -36,12 +36,35 @@ fetch('/bff/api/departments/')
                     
                     aDep.textContent = `${emp.first_name} ${emp.last_name}`
                     aDep.href = '#'
-                    
+                    aDep.setAttribute('user-id', emp.id)
                     nameDiv.appendChild(aDep)
                     liDep.appendChild(onlineDiv)
                     liDep.appendChild(nameDiv)
-                    
                     ulDep.appendChild(liDep)
+                    const token = localStorage.getItem('authToken');
+                    aDep.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const userId = this.getAttribute('user-id');
+                        fetch('/bff/api/get-user', {
+                            method: 'GET',
+                            headers: {
+                                'Search-User-ID': `${userId}`,
+                                'Authorization': `Token ${token}`,
+                                'Content-Type': 'application/json',
+                            },
+                            mode: 'cors',
+                            cache: 'no-cache'
+                        })
+                            .then(response => {
+                                if (response.status == 200){
+                                    return response.json()
+                                }
+                            })
+                            .then(userInfo => {
+                                localStorage.setItem('userInfo', JSON.stringify(userInfo))
+                                window.location.href = ''
+                            })
+                    })
                 }
             )
         });

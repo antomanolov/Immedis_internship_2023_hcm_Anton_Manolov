@@ -42,6 +42,13 @@ def logout_view(request):
         return JsonResponse(data=data, safe=False)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
 
+def get_user(request):
+    backend_url = f'http://localhost:8000/api/core/user-by-id/{request.headers.get("Search-User-ID")}/'
+    response = requests.get(backend_url, headers=request.headers)
+    if response.status_code == 200:
+        return JsonResponse(response.json(), status=200)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)    
+
 class RegisterView(APIView):
     def post(self,request):
         backend_api_url = 'http://localhost:8000/api/core/create-employee/'  

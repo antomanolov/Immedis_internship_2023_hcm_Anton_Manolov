@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "/css/employee-css/profile.css/" %}">
+    <script src="{% static "js/hr(admin)/profile.js" %}" defer></script>
+    <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
+    <title>HCM</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            
+            <img src="" alt="">
+        </div>
+        <div class="searchbar">
+            <input type="text" placeholder="Search...">
+            <button class="btn">Search</button>
+        </div>
+        <div class="menu">
+            <a href="/front-end/employee-html/leave-request.html" class="btn">+Leave Request</a>
+            <a href="/front-end/employee-html/profile.html" class="btn">Profile</a>
+            <a href="" class="btn">Sign In</a>
+            <a href="" class="btn">Sign Out</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="content">
+            <ul>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-house"></i>
+                        <a href="/front-end/employee-html/index.html">Home</a>
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-medal"></i>
+                        <a href="/front-end/employee-html/performance.html"></i>Performance</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-regular fa-money-bill-1"></i>
+                        <a href="/front-end/employee-html/paychecks.html"></i>Paycheck</a>
+                    </div>
+                    
+                </li>
+                <li>
+                    <div class="sidebar-item">
+                        <i class="fa-solid fa-list-check"></i>
+                        <a href="/front-end/employee-html/tasks.html"></i>Tasks</a>
+                    </div>
+                    
+                </li>
+               
+                <li>
+                    <div class="sidebar-item exit">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <a href="#"></i>Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end of base html -->
+    <div class="middle">
+        <div class="header">
+            <div class="img">
+                <img src="/front-end/img/avatar.png" alt="">
+            </div>
+
+            <div class="header-info">
+                <div class="title">
+                    <p class="title-seniority"></p>
+                </div>
+                <div class="location">
+                    <p class="location-p">Varna, Bulgaria</p>
+                </div>
+                <div class="gmt">
+                    <p>GMT+3(13:31)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-me">
+            <h1 class="section-label">Basic Info</h1>
+            <div class="about-me-container">
+                <div class="about-me-couples">
+                    <p class="ml first-name-p">First name: Anto</p>
+                    <p class="mr last-name-p">Last name: Manolov</p>
+                </div>
+                <div class="about-me-couples">
+                    <p class="ml email-p">Email: sayan@gmail.com</p>
+                    <p class="mr telephone-p">Telephone: (+359) 96901022</p>
+                </div>
+                <div class="about-me-couples">
+                    <p class="ml date-of-birth-p">Date of birth: 02.17.1990</p>
+                    <p class="mr gender-p">Gender: Male</p>
+                </div>
+            </div>
+        </div>
+        <div class="skills">
+            <h1 class="section-label">Skills</h1>
+            <div class="skill-box">
+                
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+               
+            </div>
+        </div>
+        <div class="work-info">
+            <h1 class="section-label">Work Info</h1>
+            <div class="about-me-container">
+                <div class="about-me-couples">
+                    <p class="ml">Department: IT</p>
+                    <p class="mr">Job Title: Web Developer</p>
+                </div>
+                <div class="about-me-couples">
+                    <p class="ml">Location: Varna</p>
+                    <p class="mr">Seniority: Junior</p>
+                </div>
+                <div class="about-me-couples">
+                    <p class="ml">Date of hire: 02.08.2023</p>
+                    <p class="mr">Telephone: (+359) 96901022</p>
+                </div>
+            </div>
+        </div>
+        <div class="other-info">
+            <h1 class="section-label">Soft Skills</h1>
+            <div class="skill-box">
+                
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">CSS</div>
+                
+            </div>
+        </div>
+        <div class="completed-tasks">
+            <h1 class="section-label">Completed Tasks</h1>
+            <div class="tasks-grid">
+                <div class="task">
+                    <p><strong> Task name:</strong> <span class="grey-text">API backend</span></p>
+                    <p><strong>Task Description:</strong> <span class="grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, porro.</span></p>
+                    <p><strong>Given by:</strong> <span class="grey-text">Andrew McDermith</span></p>
+                    <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
+                </div>
+                <div class="task">
+                    <p><strong> Task name:</strong> <span class="grey-text">API backend</span></p>
+                    <p><strong>Task Description:</strong> <span class="grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, porro.</span></p>
+                    <p><strong>Given by:</strong> <span class="grey-text">Andrew McDermith</span></p>
+                    <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
+                </div>
+                <div class="task">
+                    <p><strong> Task name:</strong> <span class="grey-text">API backend</span></p>
+                    <p><strong>Task Description:</strong> <span class="grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, porro.</span></p>
+                    <p><strong>Given by:</strong> <span class="grey-text">Andrew McDermith</span></p>
+                    <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
+                </div>
+                <div class="task">
+                    <p><strong> Task name:</strong> <span class="grey-text">API backend</span></p>
+                    <p><strong>Task Description:</strong> <span class="grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, porro.</span></p>
+                    <p><strong>Given by:</strong> <span class="grey-text">Andrew McDermith</span></p>
+                    <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
+                </div>
+                <div class="task">
+                    <p><strong> Task name:</strong> <span class="grey-text">API backend</span></p>
+                    <p><strong>Task Description:</strong> <span class="grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, porro.</span></p>
+                    <p><strong>Given by:</strong> <span class="grey-text">Andrew McDermith</span></p>
+                    <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
