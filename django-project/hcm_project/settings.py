@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #cors - to CORS work properly
+    'corsheaders',
     
     # django rest framework app
     'rest_framework',
@@ -41,6 +44,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # corsheaders middleware must be put at MOST top level that can be
+    # to work properly, if something breaks I must see if this isn't the reason
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,3 +143,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'backend_api.CustomUserModel'
+
+# to actually make headers requests with custom headers must install
+# django cors!
+CORS_ALLOW_ALL_ORIGINS = False  
+# the only allowed origin that can send requests
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8001",  
+]

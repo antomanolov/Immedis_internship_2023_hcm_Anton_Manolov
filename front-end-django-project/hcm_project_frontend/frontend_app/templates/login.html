@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static "js/hr(admin)/login.js" %}" defer></script>
+    <script src="{%static 'js/hr(admin)/login.js'%}" defer></script>
     <title>Document</title>
 </head>
 <body>
     <form id="login-form">
+        
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" required><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br>
-        <button type="submit">Login</button>
         {% csrf_token %}
+        <button type="submit">Login</button>
     </form>
+    
     <div id="user-info"></div>
 </body>
 </html>

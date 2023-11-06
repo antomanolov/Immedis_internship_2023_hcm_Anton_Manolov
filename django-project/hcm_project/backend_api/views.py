@@ -1,12 +1,33 @@
+#DRF imports
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.decorators import authentication_classes, permission_classes, api_view
+from rest_framework.permissions import IsAuthenticated
+
+
+# generic models and imports from the app
 from hcm_project.backend_api.appuser import AppUser
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
 from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, UserLoginSerializer
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    user_info = {
+        'email': user.email,
+        'name': user.get_full_name(),
+        'id': user.pk,
+    }
+    
+    return Response(user_info, status=status.HTTP_200_OK)
+
 
 class DepartmentEmployeeList(APIView):
     def get(self, request):
@@ -50,6 +71,7 @@ class LoginView(ObtainAuthToken):
         
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
+
         
         token, created = Token.objects.get_or_create(user=user)
         return Response({
