@@ -1,77 +1,15 @@
+{% extends "HR(admin)/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "/css/employee-css/profile.css/" %}">
-    <script src="{% static "js/hr(admin)/profile.js" %}" defer></script>
-    <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
-    <title>HCM</title>
-</head>
-<body>
-    <div class="navbar">
-        <div class="logo">
-            
-            <img src="" alt="">
-        </div>
-        <div class="searchbar">
-            <input type="text" placeholder="Search...">
-            <button class="btn">Search</button>
-        </div>
-        <div class="menu">
-            <a href="/front-end/employee-html/leave-request.html" class="btn">+Leave Request</a>
-            <a href="/front-end/employee-html/profile.html" class="btn">Profile</a>
-            <a href="" class="btn">Sign In</a>
-            <a href="" class="btn">Sign Out</a>
-        </div>
-    </div>
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static "/css/hr(admin)-css/profilee.css" %}">
+    <script src="{% static "/js/hr(admin)/profile.js" %}" defer></script>
+{% endblock custom_css%}
+{% block content %}
 
-    <div class="sidebar">
-        <div class="content">
-            <ul>
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/front-end/employee-html/index.html">Home</a>
-                    </div>
-                </li>
-                
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-medal"></i>
-                        <a href="/front-end/employee-html/performance.html"></i>Performance</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-regular fa-money-bill-1"></i>
-                        <a href="/front-end/employee-html/paychecks.html"></i>Paycheck</a>
-                    </div>
-                    
-                </li>
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-list-check"></i>
-                        <a href="/front-end/employee-html/tasks.html"></i>Tasks</a>
-                    </div>
-                    
-                </li>
-               
-                <li>
-                    <div class="sidebar-item exit">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <a href="#"></i>Sign out</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- end of base html -->
     <div class="middle">
         <div class="header">
             <div class="img">
-                <img src="/front-end/img/avatar.png" alt="">
+                <img src={% static "/img/avatar.png" %} alt="">
             </div>
 
             <div class="header-info">
@@ -79,7 +17,7 @@
                     <p class="title-seniority"></p>
                 </div>
                 <div class="location">
-                    <p class="location-p">Varna, Bulgaria</p>
+                    <p class="location-p"></p>
                 </div>
                 <div class="gmt">
                     <p>GMT+3(13:31)</p>
@@ -91,16 +29,16 @@
             <h1 class="section-label">Basic Info</h1>
             <div class="about-me-container">
                 <div class="about-me-couples">
-                    <p class="ml first-name-p">First name: Anto</p>
-                    <p class="mr last-name-p">Last name: Manolov</p>
+                    <p class="ml first-name-p">First name: </p>
+                    <p class="mr last-name-p">Last name: </p>
                 </div>
                 <div class="about-me-couples">
-                    <p class="ml email-p">Email: sayan@gmail.com</p>
-                    <p class="mr telephone-p">Telephone: (+359) 96901022</p>
+                    <p class="ml email-p">Email: </p>
+                    <p class="mr telephone-p">Telephone: (+359)</p>
                 </div>
                 <div class="about-me-couples">
-                    <p class="ml date-of-birth-p">Date of birth: 02.17.1990</p>
-                    <p class="mr gender-p">Gender: Male</p>
+                    <p class="ml date-of-birth-p">Date of birth: </p>
+                    <p class="mr gender-p">Gender: </p>
                 </div>
             </div>
         </div>
@@ -131,16 +69,16 @@
             <h1 class="section-label">Work Info</h1>
             <div class="about-me-container">
                 <div class="about-me-couples">
-                    <p class="ml">Department: IT</p>
-                    <p class="mr">Job Title: Web Developer</p>
+                    <p class="ml dep-p">Department: </p>
+                    <p class="mr job-title-p">Job Title: </p>
                 </div>
                 <div class="about-me-couples">
-                    <p class="ml">Location: Varna</p>
-                    <p class="mr">Seniority: Junior</p>
+                    <p class="ml location-p2">Location: </p>
+                    <p class="mr seniority-p2">Seniority: </p>
                 </div>
                 <div class="about-me-couples">
-                    <p class="ml">Date of hire: 02.08.2023</p>
-                    <p class="mr">Telephone: (+359) 96901022</p>
+                    <p class="ml date-of-hire-p">Date of hire: </p>
+                    <p class="mr telephone-p2">Telephone: (+359)</p>
                 </div>
             </div>
         </div>
@@ -200,7 +138,11 @@
                     <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
                 </div>
             </div>
+            <div class="edit-delete-btns">
+                <div class="edit-btn">Edit</div>
+                <div class="delete-btn">Delete</div>
+            </div>
         </div>
     </div>
-</body>
-</html>
+   
+{% endblock content %}

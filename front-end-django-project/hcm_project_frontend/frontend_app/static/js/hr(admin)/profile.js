@@ -7,9 +7,29 @@ const emailP = document.querySelector('.email-p')
 const telephoneP = document.querySelector('.telephone-p')
 const dateOfBirthP = document.querySelector('.date-of-birth-p')
 const genderP = document.querySelector('.gender-p')
-
+const depP = document.querySelector('.dep-p')
+const jobTitleP = document.querySelector('.job-title-p')
+const locationP2 = document.querySelector('.location-p2')
+const seniorityP = document.querySelector('.seniority-p2')
+const dateOfHire = document.querySelector('.date-of-hire-p')
+const telephoneP2 = document.querySelector('.telephone-p2')
 
 if (userInfo){
-    //#TODO make the get-user-by-id view in the backend to return user departments
-    // and job titles not like ints but like strings !   
+    firstNameP.textContent += userInfo.firs_name
+    lastNameP.textContent += userInfo.last_name
+    titleSeniority.textContent = `${userInfo.seniority} ${userInfo.job_title}`
+    locationP.textContent += `${userInfo.location}, Bulgaria`
+    emailP.textContent += userInfo.email
+    telephoneP.textContent += userInfo.telephone
+    telephoneP2.textContent += userInfo.telephone
+    dateOfBirthP.textContent += userInfo.birthdate
+    genderP.textContent += userInfo.gender
+    depP.textContent += userInfo.department
+    jobTitleP.textContent += userInfo.job_title
+    locationP2.textContent += userInfo.location
+    seniorityP.textContent += userInfo.seniority
+    dateOfHire.textContent += userInfo.hire_date
+
+}else {
+    window.location.href = '/'
 }

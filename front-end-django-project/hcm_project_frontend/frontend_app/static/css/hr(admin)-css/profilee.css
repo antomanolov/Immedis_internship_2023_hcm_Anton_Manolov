@@ -1,0 +1,213 @@
+@import url('../base.css');
+
+.middle {
+    margin-top: 2rem;
+    margin-right: 2rem;
+    margin-left: 14rem;
+    display: grid;
+    grid-template-areas: 
+    "header header header header header"
+    "about skills skills other other"
+    "work skills skills other other"
+    "tasks tasks tasks tasks tasks";
+}
+
+.about-me, 
+.skills, 
+.work-info, 
+.other-info,
+.completed-tasks,
+.header {
+    border-radius: 10px;
+    box-shadow: -0.1rem 0.01rem 0.6rem 0.01rem var(--background);
+    background-color: var(--font-color);
+    border-color: none;
+}
+
+.header {
+    grid-area: header;
+    height: 10rem;
+}
+
+.about-me {
+    margin-top: 1rem;
+    grid-area: about;
+    height: 12rem;
+    
+}
+
+.skills {
+    margin-top: 1rem;
+    height: 25rem;
+    grid-area: skills;
+    margin-left: 2rem;
+}
+
+.work-info {
+    height: 12rem;
+    margin-top: 1rem;
+    grid-area: work;
+    
+}
+
+.other-info {
+    margin-top: 1rem;
+    margin-left:2rem;
+    height: 25rem;
+    grid-area: other;
+    
+}
+
+.completed-tasks {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 20rem;
+    grid-area: tasks;
+    
+}
+
+.section-label {
+    font-size: 1.7rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border-bottom: 2px dotted var(--background);
+}
+/* header */
+
+.header {
+    background-color: var(--button);
+}
+.img {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--font-color);
+    margin: 0.5rem auto;
+}
+
+.img img{
+    width: 50px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.header-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.header-info p {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+/* basic info, work info */
+
+.about-me-couples {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0; /* Add spacing between each couple (adjust as needed) */
+}
+
+.about-me-couples p {
+    padding: 2px;
+    font-size: 1.3rem;
+}
+.ml {
+    margin-left: 1rem;
+}
+
+.mr {
+    margin-right: 1rem;
+}
+
+/* skills, soft skills */
+
+.skill-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 60px);
+    margin: 1.2rem 2rem;
+    row-gap: 1rem;
+    column-gap: 0.5rem;
+    
+}
+
+.skill{
+    
+    background-color: var(--button);
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+}
+
+/* completed tasks */
+
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    margin-left: 2.6rem;
+}
+
+.task {
+    margin-top: 0.5rem;
+    width: 300px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: var(--button);
+    border-color: none;
+    box-shadow: -0.06rem 0.01rem 0.4rem 0.01rem var(--background);
+}
+
+.task p {
+    margin-top: 10px;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+}
+
+.grey-text {
+    color: var(--background);
+    font-style: italic;
+}
+
+/* edit-delete buttons */
+.edit-delete-btns {
+    margin-top: 2rem;
+    /* margin-bottom: 2rem; */
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.edit-btn,
+.delete-btn{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+    padding: 10px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.edit-btn{
+    background-color: var(--button);
+    
+}
+
+.delete-btn {
+    background-color: var(--error);
+    padding: 10px 30px;
+}
+

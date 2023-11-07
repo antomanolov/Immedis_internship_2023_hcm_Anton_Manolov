@@ -63,8 +63,22 @@ def get_user_info(request, pk):
     
     try:
         user = AppUser.objects.get(pk=pk)
-        serializer = EmployeeSerializer(user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+
+        data = {
+            'user_name': user.get_full_name(),
+            'department': user.department.name,
+            'job_title': user.job_title.title,
+            'firs_name': user.first_name,
+            'last_name': user.last_name,
+            'seniority': user.seniority,
+            'location': user.location,
+            'email': user.email,
+            'telephone': user.telephone_number,
+            'birthdate': user.date_of_birth,
+            'gender': user.gender,
+            'hire_date': user.date_of_hire,
+        }
+        return Response(data, status=status.HTTP_200_OK)
     except AppUser.DoesNotExist:
         return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 

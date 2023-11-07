@@ -1,3 +1,6 @@
+if (localStorage.getItem('userInfo')){
+    localStorage.removeItem('userInfo')
+}
 const depBoxes = document.querySelector('.department-boxes')
 
 
@@ -62,7 +65,8 @@ fetch('/bff/api/departments/')
                             })
                             .then(userInfo => {
                                 localStorage.setItem('userInfo', JSON.stringify(userInfo))
-                                window.location.href = ''
+                                window.location.href = 'profile/'
+                               
                             })
                     })
                 }
