@@ -1,0 +1,74 @@
+@import url('base.css');
+@import url("employee-css/leave-request.css");
+
+body {
+    
+    background-image: url(../img/background-login.png);
+    background-position: center;
+}
+.form-img-container{
+    display: flex;
+    
+}
+
+
+input[type="email"],
+input[type="password"]
+ {
+    
+    border-bottom: none;
+    border-left: 8px solid var(--button);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    width: 100%;
+    padding: 10px;
+}
+
+.email-l {
+    margin-top: 8rem;
+}
+label {
+    color: var(--button-secondary);
+    font-size: 1.6rem;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder
+ {
+    text-align: center;
+    color: blue;
+    font-size: 1.3rem;
+}
+
+#login-form {
+    text-align: center;
+    background-image: url('../img/form-b.png');
+    background-position: center;
+    
+    height: 700px;
+}
+
+.login-container{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.login-btn {
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    font-size: 1.5rem;
+    align-self: center;
+    margin-top: 5rem;
+    background-color: var(--button);
+    cursor: pointer;
+}
+
+.credits {
+    position: absolute;
+    bottom: 2px;
+    left: 20px;
+}

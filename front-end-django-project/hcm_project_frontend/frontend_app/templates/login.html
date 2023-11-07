@@ -5,19 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{%static 'js/hr(admin)/login.js'%}" defer></script>
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
     <title>Document</title>
 </head>
 <body>
-    <form id="login-form">
+    <div class="form-img-container">
+        <div class="login-container">
+            <div class="">
+                <form id="login-form">
+                    
+                    <label for="email" class="email-l ep">Enter your email:</label>
+                    <input type="email" id="email" name="email" required autocomplete="off"><br>
+                    <label for="password" class="ep">Enter your password:</label>
+                    <input type="password" id="password" name="password" required autocomplete="off"><br>
+                    {% csrf_token %}
+                <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
         
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        {% csrf_token %}
-        <button type="submit">Login</button>
-    </form>
-    
-    <div id="user-info"></div>
+    </div>
+    <div class="credits">
+        <a href="http://www.freepik.com">The body and form backgrounds are designed by Freepik</a>
+    </div>
 </body>
 </html>

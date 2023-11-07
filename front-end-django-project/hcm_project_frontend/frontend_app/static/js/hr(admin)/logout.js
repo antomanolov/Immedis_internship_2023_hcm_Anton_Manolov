@@ -1,5 +1,15 @@
 const wellcomeSign = document.querySelector('.wellcome')
 const logoutBtns = document.querySelectorAll('.logout-btn')
+const addEmployeeBtn = document.querySelector('.add-employee')
+const homeBtn = document.querySelector('.home-btn')
+
+homeBtn.addEventListener('click', ()=>{
+    window.location.href = '/'
+})
+addEmployeeBtn.addEventListener('click', () =>{
+    window.location.href = '/register/'
+})
+
 logoutBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         const token = localStorage.getItem('authToken');
