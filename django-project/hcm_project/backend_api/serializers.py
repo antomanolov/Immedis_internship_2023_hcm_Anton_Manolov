@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from hcm_project.backend_api.appuser import AppUser
+from hcm_project.backend_api.models.app_models import Task
 
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
 
@@ -43,3 +44,9 @@ class UserLoginSerializer(serializers.Serializer):
             raise serializers.ValidationError("Invalid email or password.")
 
         return data
+
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = '__all__'

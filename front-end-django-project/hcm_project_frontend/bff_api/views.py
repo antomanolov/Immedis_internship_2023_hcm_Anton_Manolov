@@ -97,3 +97,9 @@ def delete_user(request):
         data = response.json()
         return JsonResponse(data=data, safe=False)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+# tasks/reviews/paychecks
+
+def add_task(request):
+    print(request.body)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)

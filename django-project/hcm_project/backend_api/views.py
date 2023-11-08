@@ -17,10 +17,14 @@ from hcm_project.backend_api.appuser import AppUser
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
 from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, UserLoginSerializer
 
+# USER RELATED VIEWS
+
 # register and login
 class RegisterView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
+        
         serializer = EmployeeSerializer(data=request.data)
+        
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -48,7 +52,9 @@ class LoginView(ObtainAuthToken):
 
 class DepartmentEmployeeList(APIView):
     def get(self, request):
-        departments = Department.objects.all()
+        # excluding the HRs becouse they are administration, and only the superuser will make changes to them
+        # later cna be revisited
+        departments = Department.objects.exclude(name='HR').all()
         data = []
 
         for department in departments:
@@ -92,7 +98,6 @@ def get_logged_user_info(request):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def get_user_info(request, pk):
-    
     try:
         user = AppUser.objects.get(pk=pk)
 
@@ -174,4 +179,44 @@ class UserProfileUpdateView(generics.RetrieveUpdateDestroyAPIView):
         return Response({'message': 'User deleted successfully'}, status=status.HTTP_200_OK)
     
 
+# OTHER VIEWS(TASKS/REVIEWS/PAYCHECKS)
+class TasksCRUD(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = EmployeeSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_object(self):
+        user_id = self.kwargs['pk']
+        try:
+            user = AppUser.objects.get(pk=user_id)
+            return user
+        except AppUser.DoesNotExist:
+            return None
+    
+    def get(self, request, *args, **kwargs):
+        user = AppUser.objects.get(pk=self.kwargs['pk'])
+        serializer = self.serializer_class(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
+
+        if not user: 
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = self.serializer_class(
+            user, data=request.data, partial=True
+            )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self, request, *args, **kwargs):
+        user = self.get_object()
+        
+        if not user: 
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        user.delete()
+        return Response({'message': 'User deleted successfully'}, status=status.HTTP_200_OK)
+    

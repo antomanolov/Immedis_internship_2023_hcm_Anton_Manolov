@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 
 from hcm_project.backend_api.appuser import AppUser
-from hcm_project.backend_api.models.app_models import Attendance, LeaveBallance, LeaveHistory, LeaveRequest, Payroll, PerformanceReview, Task
+from hcm_project.backend_api.models.app_models import Attendance, LeaveBallance, LeaveRequest, Payroll, PerformanceReview, Task
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
 
 
@@ -34,7 +34,7 @@ class CustomAdmin(UserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "password1", "password2"),
+                "fields": ("email", "first_name","last_name","password1", "password2", 'is_hr'),
             },
         ),
     )

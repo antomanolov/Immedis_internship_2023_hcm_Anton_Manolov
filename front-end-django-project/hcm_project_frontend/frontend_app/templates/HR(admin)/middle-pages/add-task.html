@@ -1,100 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/hr(admin)-css/add-review.css">
-    <script src="https://kit.fontawesome.com/c88f4e308d.js" crossorigin="anonymous"></script>
-    <title>HCM</title>
-</head>
-<body>
-    <div class="navbar">
-        <div class="logo">
-            
-            <img src="" alt="">
-        </div>
-        <div class="searchbar">
-            <input type="text" placeholder="Search...">
-            <button class="btn">Search</button>
-        </div>
-        <div class="menu">
-            <a href="/front-end/hr(admin)-html/add-employee.html" class="btn">+Add Employee</a>
-            <a href="/front-end/hr(admin)-html/add-review.html" class="btn">+Add Review</a>
-            <a href="/front-end/hr(admin)-html/add-task.html" class="btn">+Add Task</a>
-            <a href="/front-end/hr(admin)-html/submit-paycheck.html" class="btn">+Submit Paycheck</a>
-            <!-- <a href="" class="btn">Sign In</a> -->
-            <a href="" class="btn">Sign Out</a>
-        </div>
-    </div>
-
-    <div class="sidebar">
-        <div class="content">
-            <ul>
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/front-end/hr(admin)-html/index.html">Home</a>
-                    </div>
-                </li>
-               
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-medal"></i>
-                        <a href="/front-end/hr(admin)-html/performance.html"></i>Performance</a>
-                    </div>
-                </li>
-               
-               
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-list"></i>
-                        <a href="/front-end/hr(admin)-html/reviews.html"></i>Reviews</a>
-                    </div>
-                    
-                </li>
-                <li>
-                    <div class="sidebar-item">
-                        <i class="fa-solid fa-users"></i>
-                        <a href="../hr(admin)-html/profiles.html"></i>Profiles</a>
-                    </div>
-                    
-                </li>
-                
-                <li>
-                    <div class="sidebar-item exit">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <a href="#"></i>Sign out</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+{% extends "HR(admin)/base.html" %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static "css/hr(admin)-css/add-employee.css" %}">
+    <script src="{% static "/js/hr(admin)/add-task.js" %}" defer></script>
+{% endblock custom_css%}
+{% block content %}
 
     <div class="middle">
-        <form>
+        <form id='task-form'>
             <h1 class="title">Add Task</h1>
-            <select id="select-input" name="select-input" placeholder="Select Dropdown">
-                <option value="" disabled selected>Select Department</option>
-                <option value="option1">IT</option>
-                <option value="option2">Accountant</option>
-                <option value="option3">Management</option>
-            </select>
-            <select id="select-input" name="select-input" placeholder="Select Dropdown">
-                <option value="" disabled selected>Select Employee</option>
-                <option value="option1">Tonkata</option>
-                <option value="option2">Mars</option>
-                <option value="option3">Tzonio</option>
-            </select>
-            <input type="text" name="" id="" placeholder="Task name">
-            
-            <textarea id="textarea-input" name="textarea-input" placeholder="Description"></textarea>
+            {% csrf_token %}
+            <input type="text" name="name" id="" placeholder="Task name">
+            <textarea id="textarea-input" name="description" placeholder="Description"></textarea>
             <label for="from-date">Deadline:</label>
-            <input type="date" id="from-date" name="from-date">
+            <input type="date" id="from-date" name="deadline">
             <div class="submit-button">
                 <button type="submit">Submit Task</button>
             </div>
         </form>
     </div>
 
-</body>
-</html>
+{% endblock content%}

@@ -1,7 +1,7 @@
 {% extends "HR(admin)/base.html" %}
 {% load static %}
 {% block custom_css %}
-    <link rel="stylesheet" href="{% static "/css/hr(admin)-css/profilee.css" %}">
+    <link rel="stylesheet" href="{% static "/css/hr(admin)-css/profile.css" %}">
     <script src="{% static "/js/hr(admin)/profile.js" %}" defer></script>
 {% endblock custom_css%}
 {% block content %}
@@ -138,9 +138,16 @@
                     <p><strong>Task complete on:</strong> <span class="grey-text">08.10.2023</span></p>
                 </div>
             </div>
-            <div class="edit-delete-btns">
-                <div class="edit-btn"><a href="{% url "edit user page" %}">Edit</a></div>
-                <div class="delete-btn"><a>Delete</a></div>
+            <div class="btns-container">
+                <div class="other-action-btns">
+                    <a href="" class="add-review-btn">+Review</a>
+                    <a href="{% url "add task page" %}" class="add-task-btn">+Task</a>
+                    <a href="" class="add-paycheck-btn">+Paycheck</a>
+                </div>
+                <div class="delete-edit-btns">
+                    <a href="{% url "edit user page" %}" class="edit-btn">Edit</a>
+                    <a class="delete-btn">Delete</a>
+                </div>
             </div>
         </div>
     </div>
