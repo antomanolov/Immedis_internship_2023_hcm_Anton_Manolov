@@ -1,0 +1,47 @@
+{% extends "HR(admin)/base.html" %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static "css/hr(admin)-css/add-employee.css" %}">
+    <script src="{% static "/js/hr(admin)/edit-employee.js" %}" defer></script>
+{% endblock custom_css%}
+{% block content %}
+
+    <div class="middle">
+        <form id='edit-form'>
+            <h1 class="title">Edit Employee</h1>
+            <input type="text" name="first_name" placeholder="First Name" autocomplete='on'>
+            <input type="text"  name="last_name" placeholder="Last Name">
+            <input type="text"  name="telephone_number" placeholder="Telephone Number">
+            <input type="text"  name="location" placeholder="Location">
+           
+            <select  id="department-select" name="department" placeholder="Select Department">
+                <option value="" disabled selected>Select Department</option>
+            </select>
+            <select id="job-title-select" name="job_title" placeholder="Select Job Title">
+                <option value="" disabled selected>Select Job Title</option>
+            </select>
+            <select  name="gender" placeholder="Gender">
+                <option value="" disabled selected>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Gender-fluid">Gender fluid</option>
+                <option value="Non-binary">Gender neutral</option>
+            </select>
+            <select name="seniority" placeholder="Seniority">
+                <option value="" disabled selected>Seniority</option>
+                <option value="Junior">Junior</option>
+                <option value="Regular">Regular</option>
+                <option value="Middle">Mid</option>
+                <option value="Senior">Senior</option>
+            </select>
+           
+            <div class="submit-button">
+                <button type="submit">Edit Employee</button>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+
+</body>
+</html>
+{% endblock content%}

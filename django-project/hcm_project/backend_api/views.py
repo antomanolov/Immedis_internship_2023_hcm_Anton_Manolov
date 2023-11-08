@@ -1,3 +1,5 @@
+#Django imports
+from django.contrib.auth import login
 #DRF imports
 from rest_framework.views import APIView
 from rest_framework import generics
@@ -32,14 +34,42 @@ class LoginView(ObtainAuthToken):
         
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
+        if user is not None:
+            login(request, user)
 
-        
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            'token': token.key,
-            'user_id': user.pk,
-            'email': user.email
-        })
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({
+                'token': token.key,
+                'user_id': user.pk,
+                'email': user.email
+            })
+        return Response({'message': 'Invalid credentials'}, status=400)
+
+
+class DepartmentEmployeeList(APIView):
+    def get(self, request):
+        departments = Department.objects.all()
+        data = []
+
+        for department in departments:
+            department_data = {
+                'id': department.id,
+                'name': department.name,
+                'employees': []
+            }
+
+            employees = AppUser.objects.filter(department=department)
+            employee_serializer = EmployeeSerializer(employees, many=True)
+            
+            department_data['employees'] = employee_serializer.data
+            data.append(department_data)
+        return Response(data, status=status.HTTP_200_OK)
+
+class JobTitlesList(APIView):
+    def get(self, request):
+        job_titles = JobTitle.objects.all()
+        job_titles_serializer = JobTitleSerializer(job_titles, many=True)
+        return Response(job_titles_serializer.data, status=status.HTTP_200_OK)
 
 
 # get the user and use it as AUTH for every page
@@ -56,6 +86,8 @@ def get_logged_user_info(request):
     
     return Response(user_info, status=status.HTTP_200_OK)
 
+
+#get the info for any given user with pk(Primary key)
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
@@ -65,6 +97,7 @@ def get_user_info(request, pk):
         user = AppUser.objects.get(pk=pk)
 
         data = {
+            'id': user.pk,
             'user_name': user.get_full_name(),
             'department': user.department.name,
             'job_title': user.job_title.title,
@@ -97,32 +130,37 @@ def logout(request):
             return Response({'message':'No token to revoke'}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'message':'Invalid or missing auth token'}, status=status.HTTP_400_BAD_REQUEST)
 
+class UserProfileUpdateView(generics.UpdateAPIView):
+    serializer_class = EmployeeSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_object(self):
+        user_id = self.kwargs['pk']
+        try:
+            user = AppUser.objects.get(pk=user_id)
+            return user
+        except AppUser.DoesNotExist:
+            return None
+    
+    def get(self, request, *args, **kwargs):
+        user = AppUser.objects.get(pk=self.kwargs['pk'])
+        serializer = self.serializer_class(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-class DepartmentEmployeeList(APIView):
-    def get(self, request):
-        departments = Department.objects.all()
-        data = []
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
 
-        for department in departments:
-            department_data = {
-                'id': department.id,
-                'name': department.name,
-                'employees': []
-            }
-
-            employees = AppUser.objects.filter(department=department)
-            employee_serializer = EmployeeSerializer(employees, many=True)
-            
-            department_data['employees'] = employee_serializer.data
-            data.append(department_data)
-        return Response(data, status=status.HTTP_200_OK)
-
-class JobTitlesList(APIView):
-    def get(self, request):
-        job_titles = JobTitle.objects.all()
-        job_titles_serializer = JobTitleSerializer(job_titles, many=True)
-        return Response(job_titles_serializer.data, status=status.HTTP_200_OK)
+        if not user: 
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = self.serializer_class(
+            user, data=request.data, partial=True
+            )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     
     
 

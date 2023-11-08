@@ -1,10 +1,12 @@
 import json
 from django.http import JsonResponse
+from django.shortcuts import redirect, render
 import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+# get deps and job titles 
 def get_departments(request):
     backend_url = 'http://localhost:8000/api/core/departments/'
     response = requests.get(backend_url)
@@ -25,6 +27,8 @@ def get_job_titles(request):
     
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
 
+
+# fetch the current logged user info
 def get_current_user(request):
     backend_url = 'http://localhost:8000/api/core/get-user/'
     response = requests.get(backend_url, headers=request.headers)
@@ -34,14 +38,9 @@ def get_current_user(request):
         return JsonResponse(data=data, safe=False)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
 
-def logout_view(request):
-    backend_url = 'http://localhost:8000/api/core/logout/'
-    response = requests.post(backend_url, headers=request.headers)
-    if response.status_code == 200:
-        data = response.json()
-        return JsonResponse(data=data, safe=False)
-    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
 
+
+# fetch the wanted user info for profile view/edit/delete purposes
 def get_user(request):
     backend_url = f'http://localhost:8000/api/core/user-by-id/{request.headers.get("Search-User-ID")}/'
     response = requests.get(backend_url, headers=request.headers)
@@ -49,6 +48,7 @@ def get_user(request):
         return JsonResponse(response.json(), status=200)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)    
 
+# register/login/logout
 class RegisterView(APIView):
     def post(self,request):
         backend_api_url = 'http://localhost:8000/api/core/create-employee/'  
@@ -70,3 +70,21 @@ class LoginView(APIView):
             return Response({'token': token}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
+
+def logout_view(request):
+    backend_url = 'http://localhost:8000/api/core/logout/'
+    response = requests.post(backend_url, headers=request.headers)
+    if response.status_code == 200:
+        data = response.json()
+        return JsonResponse(data=data, safe=False)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+# edit/delete employee
+
+def edit_user(request):
+    backend_url = f'http://localhost:8000/api/core/update-user/{request.headers.get("Employee-id")}/'
+    response = requests.patch(backend_url, data=request.body ,headers=request.headers)
+    if response.status_code == 200:
+        data = response.json()
+        return JsonResponse(data=data, safe=False)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)

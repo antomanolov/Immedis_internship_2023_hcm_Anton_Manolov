@@ -1,3 +1,9 @@
+// TODO MAKE THE TOKEN AUTH NOT TO BE SAVED IN THE LOCAL STORAGE IF I HAVE MORE TIME!!!
+// try document.cookie!
+if (localStorage.getItem('authToken')) {
+    window.location.href = '/'
+}
+
 document.getElementById("login-form").addEventListener("submit", function (event) {
     event.preventDefault();
     const email = document.getElementById("email").value;

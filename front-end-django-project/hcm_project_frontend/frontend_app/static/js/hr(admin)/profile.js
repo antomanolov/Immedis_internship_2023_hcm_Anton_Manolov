@@ -14,6 +14,8 @@ const seniorityP = document.querySelector('.seniority-p2')
 const dateOfHire = document.querySelector('.date-of-hire-p')
 const telephoneP2 = document.querySelector('.telephone-p2')
 
+
+
 if (userInfo){
     firstNameP.textContent += userInfo.firs_name
     lastNameP.textContent += userInfo.last_name
@@ -33,3 +35,4 @@ if (userInfo){
 }else {
     window.location.href = '/'
 }
+
