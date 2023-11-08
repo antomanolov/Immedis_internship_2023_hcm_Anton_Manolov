@@ -36,3 +36,60 @@ if (userInfo){
     window.location.href = '/'
 }
 
+
+// modal for comfirmation
+
+const modal = document.querySelector(".modal-m");
+const cancelButton = document.getElementById("cancelButton");
+const confirmButton = document.getElementById("confirmButton");
+
+// Show the modal
+function openModal() {
+    modal.style.display = "block";
+}
+
+// Hide the modal
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Attach click event to delete button (or any element that triggers delete action)
+const deleteButton = document.querySelector('.delete-btn');
+deleteButton.addEventListener("click", openModal);
+
+// Attach click event to the cancel button
+cancelButton.addEventListener("click", closeModal);
+confirmButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    const token = localStorage.getItem('authToken');
+    const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+    
+    
+    fetch('/bff/api/delete-user/', {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': csrfToken.toString(),
+            'Content-Type': 'application/json',
+            'Employee-id': userInfo.id,
+            'Authorization': `Token ${token}`,
+        },
+        mode: 'cors',
+        cache: 'no-cache',
+        
+    })
+    .then(response => {
+        if (response.status == 200){
+            alert('You\'ve deleted the user!')
+            window.location.href = '/'
+        }
+        else{
+            response.json()
+        };
+    })
+    .then(data => console.log(data))
+    .catch(error => {
+        console.error('Error during login:', error);
+    });
+
+})

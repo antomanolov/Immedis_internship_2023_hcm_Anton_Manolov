@@ -140,9 +140,18 @@
             </div>
             <div class="edit-delete-btns">
                 <div class="edit-btn"><a href="{% url "edit user page" %}">Edit</a></div>
-                <div class="delete-btn"><a href="">Delete</a></div>
+                <div class="delete-btn"><a>Delete</a></div>
             </div>
         </div>
     </div>
-   
+    <div id="confirmationModal" class="modal-m">
+        <div class="modal-content">
+            <p>Are you sure you want to delete this employee?</p>
+        </div>
+        <div class="modal-actions">
+            <button id="cancelButton">Cancel</button>
+            <button id="confirmButton">Confirm</button>
+        </div>
+        {% csrf_token %}
+    </div> 
 {% endblock content %}

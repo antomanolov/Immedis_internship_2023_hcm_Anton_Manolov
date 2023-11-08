@@ -82,8 +82,17 @@ def logout_view(request):
 # edit/delete employee
 
 def edit_user(request):
+    print(request.user)
     backend_url = f'http://localhost:8000/api/core/update-user/{request.headers.get("Employee-id")}/'
     response = requests.patch(backend_url, data=request.body ,headers=request.headers)
+    if response.status_code == 200:
+        data = response.json()
+        return JsonResponse(data=data, safe=False)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+def delete_user(request):
+    backend_url = f'http://localhost:8000/api/core/update-user/{request.headers.get("Employee-id")}/'
+    response = requests.delete(backend_url, data=request.body ,headers=request.headers)
     if response.status_code == 200:
         data = response.json()
         return JsonResponse(data=data, safe=False)

@@ -211,3 +211,54 @@
     padding: 10px 30px;
 }
 
+/* modal for confirmation */
+.modal-m {
+    
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.modal-actions {
+    margin-top: 3rem;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 5.5rem;
+    font-size: 1.4rem;
+}
+#confirmationModal{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 100px;
+    text-align: center;
+}
+
+#cancelButton,
+#confirmButton
+{
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#confirmButton{
+    background-color: var(--button-secondary);
+}
+
+#cancelButton{
+    background-color: var(--button);
+}

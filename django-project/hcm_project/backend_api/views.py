@@ -130,7 +130,10 @@ def logout(request):
             return Response({'message':'No token to revoke'}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'message':'Invalid or missing auth token'}, status=status.HTTP_400_BAD_REQUEST)
 
-class UserProfileUpdateView(generics.UpdateAPIView):
+
+# user update view and potentialy used for fetching get requests
+# with user pk
+class UserProfileUpdateView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EmployeeSerializer
     permission_classes = [IsAuthenticated]
 
@@ -161,7 +164,14 @@ class UserProfileUpdateView(generics.UpdateAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    
+    def destroy(self, request, *args, **kwargs):
+        user = self.get_object()
+        
+        if not user: 
+            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        user.delete()
+        return Response({'message': 'User deleted successfully'}, status=status.HTTP_200_OK)
     
 
 
