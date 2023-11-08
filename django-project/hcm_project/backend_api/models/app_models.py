@@ -24,6 +24,10 @@ class Payroll(models.Model):
         decimal_places=2
     )
     day_of_monthly_payment = models.PositiveIntegerField()
+
+    payed_on = models.DateField(
+        auto_now_add=True,
+    )
     
     employee = models.ForeignKey(
         AppUser,

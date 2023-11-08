@@ -14,9 +14,9 @@ from rest_framework.permissions import IsAuthenticated
 
 # generic models and imports from the app
 from hcm_project.backend_api.appuser import AppUser
-from hcm_project.backend_api.models.app_models import Task
+from hcm_project.backend_api.models.app_models import Payroll, PerformanceReview, Task
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
-from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, TaskSerializer, UserLoginSerializer
+from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, PayrollSerializer, PerformanceReviewSerializer, TaskSerializer, UserLoginSerializer
 
 # USER RELATED VIEWS
 
@@ -225,6 +225,106 @@ class TasksCreate(generics.CreateAPIView):
         }
 
         serializer = self.serializer_class(data=task_data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PaycheckCreateView(generics.CreateAPIView):
+    serializer_class = PayrollSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+
+    def get_queryset(self):
+            # this method returns whatever keyword you put on the url
+            # <int:pk> = self.kwargs['pk']
+            user_pk = self.kwargs['pk']
+            return Payroll.objects.filter(employee=user_pk)
+    
+    # this will be used to get all of the tasks for the user
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def create(self, request, *args, **kwargs):
+        for_user_id = request.headers.get('For-User-ID')
+        gross_salary = request.data.get('gross_salary')
+        taxes = request.data.get('taxes')
+        deductions = request.data.get('deductions')
+        bonuses = request.data.get('bonuses')
+        net_salary = request.data.get('net_salary')
+
+
+        try:
+            for_user = AppUser.objects.get(pk=for_user_id)
+        except:
+            return Response({'error': 'User not found.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        payroll_data = {
+            'gross_salary': gross_salary,
+            'taxes': taxes,
+            'deductions': deductions,
+            'bonuses': bonuses,
+            'net_salary': net_salary,
+            'day_of_monthly_payment': 1,
+            'employee': for_user.pk,
+        }
+
+        serializer = self.serializer_class(data=payroll_data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class PerformanceReviewView(generics.CreateAPIView):
+    serializer_class = PerformanceReviewSerializer
+    # permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+
+    def get_queryset(self):
+            # this method returns whatever keyword you put on the url
+            # <int:pk> = self.kwargs['pk']
+            user_pk = self.kwargs['pk']
+            return PerformanceReview.objects.filter(employee=user_pk)
+    
+    # this will be used to get all of the tasks for the user
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def create(self, request, *args, **kwargs):
+        creator_id = self.request.user.pk
+        for_user_id = request.headers.get('For-User-ID')
+        review_points = request.data.get('review_points')
+        feedback = request.data.get('feedback')
+        goals_achieved = request.data.get('goals_achieved')
+        improvement_areas = request.data.get('improvement_areas')
+
+
+        try:
+            creator_user = AppUser.objects.get(pk=creator_id)
+        except AppUser.DoesNotExist:
+            return Response({'error': 'User not found.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            for_user = AppUser.objects.get(pk=for_user_id)
+        except:
+            return Response({'error': 'User not found.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        review_data = {
+            'review_points': review_points,
+            'feedback': feedback,
+            'goals_achieved': goals_achieved,
+            'improvement_areas': improvement_areas,
+            'employee': for_user.pk,
+            'reviewed_by': creator_user.pk,
+        }
+
+        serializer = self.serializer_class(data=review_data)
         
         if serializer.is_valid():
             serializer.save()

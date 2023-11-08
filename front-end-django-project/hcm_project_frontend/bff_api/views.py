@@ -106,3 +106,20 @@ def add_task(request):
         data = response.json()
         return JsonResponse(data=data, status=status.HTTP_201_CREATED)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+
+def add_paycheck(request):
+    backend_url = f'http://localhost:8000/api/core/create-paycheck/'
+    response = requests.post(backend_url, data=request.body ,headers=request.headers)
+    if response.status_code == 201:
+        data = response.json()
+        return JsonResponse(data=data, status=status.HTTP_201_CREATED)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+def add_review(request):
+    backend_url = f'http://localhost:8000/api/core/create-review/'
+    response = requests.post(backend_url, data=request.body ,headers=request.headers)
+    if response.status_code == 201:
+        data = response.json()
+        return JsonResponse(data=data, status=status.HTTP_201_CREATED)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
