@@ -28,6 +28,10 @@ body {
     background-color: var(--background-secondary);
 }
 
+.wellcome {
+    width: auto;
+    color: var(--button-secondary);
+}
 
 .navbar {
     position: sticky;

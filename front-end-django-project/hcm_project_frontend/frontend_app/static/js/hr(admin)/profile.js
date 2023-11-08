@@ -59,6 +59,8 @@ deleteButton.addEventListener("click", openModal);
 
 // Attach click event to the cancel button
 cancelButton.addEventListener("click", closeModal);
+
+// Delete the user logic
 confirmButton.addEventListener('click', function (event) {
     event.preventDefault();
     

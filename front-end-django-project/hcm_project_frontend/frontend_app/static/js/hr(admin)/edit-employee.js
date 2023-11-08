@@ -27,7 +27,7 @@ if (!userInfo){
     gender.value = userInfo.gender
     seniority.value = userInfo.seniority
 
-// start fetching first fetch for all deps/job titles
+// start fetching first fetch for all departments/job titles
     fetch('/bff/api/departments/')
         .then(response => response.json())
         .then(data => {
@@ -54,7 +54,7 @@ if (!userInfo){
             })
         })
 
-    // the PUT request and fetch
+    // the PUT request and fetch for editing the employee
     document.getElementById('edit-form').addEventListener('submit', function (event) {
         event.preventDefault();
         const formData = new FormData(this)
