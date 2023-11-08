@@ -1,6 +1,5 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
 import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -101,5 +100,9 @@ def delete_user(request):
 # tasks/reviews/paychecks
 
 def add_task(request):
-    print(request.body)
+    backend_url = f'http://localhost:8000/api/core/create-task/'
+    response = requests.post(backend_url, data=request.body ,headers=request.headers)
+    if response.status_code == 201:
+        data = response.json()
+        return JsonResponse(data=data, status=status.HTTP_201_CREATED)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)

@@ -1,4 +1,6 @@
 const token = localStorage.getItem('authToken')
+const userId = JSON.parse(localStorage.getItem('userInfo')).id
+
 
 document.getElementById('task-form').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -17,26 +19,27 @@ document.getElementById('task-form').addEventListener('submit', function (event)
                     'X-CSRFToken': csrfToken.toString(),
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${token}`,
+                    'For-User-ID': userId,
                 },
                 mode:'cors',
                 cache:'no-cache',
                 body: JSON.stringify(taskData),
             })
-        // .then (response => {
-            
-        //     if (response.status === 201) {
-        //         // Successful response
-        //         alert('Employee created');
-        //         window.location.href = '/';
-        //     } else if (response.status === 403) {
-        //         alert('Something');
-        //     } else {
-        //         alert('The email must be unique! User with this email is existing!');
-        //     }
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        // });
+        .then (response => {
+            console.log(response.status)
+            if (response.status === 201) {
+                // Successful response
+                alert('Task created');
+                window.location.href = '/';
+            } else if (response.status === 403) {
+                alert('You forgot your credentials!');
+            } else {
+                alert('The task is not created');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
         
         
         

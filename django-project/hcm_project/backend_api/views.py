@@ -14,8 +14,9 @@ from rest_framework.permissions import IsAuthenticated
 
 # generic models and imports from the app
 from hcm_project.backend_api.appuser import AppUser
+from hcm_project.backend_api.models.app_models import Task
 from hcm_project.backend_api.models.custom_user_model import Department, JobTitle
-from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, UserLoginSerializer
+from hcm_project.backend_api.serializers import EmployeeSerializer, JobTitleSerializer, TaskSerializer, UserLoginSerializer
 
 # USER RELATED VIEWS
 
@@ -180,43 +181,52 @@ class UserProfileUpdateView(generics.RetrieveUpdateDestroyAPIView):
     
 
 # OTHER VIEWS(TASKS/REVIEWS/PAYCHECKS)
-class TasksCRUD(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = EmployeeSerializer
+
+class TasksCreate(generics.CreateAPIView):
+    serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
-    def get_object(self):
-        user_id = self.kwargs['pk']
-        try:
-            user = AppUser.objects.get(pk=user_id)
-            return user
-        except AppUser.DoesNotExist:
-            return None
+    def get_queryset(self):
+            # this method returns whatever keyword you put on the url
+            # <int:pk> = self.kwargs['pk']
+            user_pk = self.kwargs['pk']
+            return Task.objects.filter(employee=user_pk)
     
+    # this will be used to get all of the tasks for the user
     def get(self, request, *args, **kwargs):
-        user = AppUser.objects.get(pk=self.kwargs['pk'])
-        serializer = self.serializer_class(user)
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def create(self, request, *args, **kwargs):
+        creator_id = self.request.user.pk
+        for_user_id = request.headers.get('For-User-ID')
+        task_name = request.data.get('name')
+        task_description = request.data.get('description')
+        task_deadline = request.data.get('deadline')
 
-    def update(self, request, *args, **kwargs):
-        user = self.get_object()
+        try:
+            creator_user = AppUser.objects.get(pk=creator_id)
+        except AppUser.DoesNotExist:
+            return Response({'error': 'User not found.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        if not user: 
-            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        try:
+            for_user = AppUser.objects.get(pk=for_user_id)
+        except:
+            return Response({'error': 'User not found.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        serializer = self.serializer_class(
-            user, data=request.data, partial=True
-            )
+        task_data = {
+            'name': task_name,
+            'description': task_description,
+            'deadline': task_deadline,
+            'employee': for_user.pk,
+            'tasked_by': creator_user.pk,
+        }
+
+        serializer = self.serializer_class(data=task_data)
+        
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    def destroy(self, request, *args, **kwargs):
-        user = self.get_object()
-        
-        if not user: 
-            return Response({'message': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-        
-        user.delete()
-        return Response({'message': 'User deleted successfully'}, status=status.HTTP_200_OK)
-    
