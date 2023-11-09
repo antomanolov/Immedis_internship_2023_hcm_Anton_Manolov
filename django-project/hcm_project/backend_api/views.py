@@ -42,11 +42,11 @@ class LoginView(ObtainAuthToken):
         user = serializer.validated_data['user']
         if user is not None:
             login(request, user)
-
+            
             token, created = Token.objects.get_or_create(user=user)
             return Response({
                 'token': token.key,
-                'user_id': user.pk,
+                'is_hr': user.is_hr,
                 'email': user.email
             })
         return Response({'message': 'Invalid credentials'}, status=400)
@@ -331,7 +331,63 @@ class PerformanceReviewView(generics.CreateAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
+
+class HRReviewsView(generics.ListAPIView):
+    serializer_class = PerformanceReviewSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Retrieve all performance reviews for the logged-in user
+        user_reviews = PerformanceReview.objects.filter(reviewed_by=self.request.user)
+        return user_reviews
+    
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        data = []
+        for review in queryset:
+            
+            review_data = {
+                'id':review.pk,
+                'points': review.review_points,
+                'feedback': review.feedback,
+                'goals_achieved': review.goals_achieved,
+                'improvement_areas': review.improvement_areas,
+                'employee': []
+            }
+
+            employee = AppUser.objects.filter(pk=review.employee.pk)
+            employee_serializer = EmployeeSerializer(employee, many=True)
+            
+            review_data['employee'] = employee_serializer.data
+            
+            data.append(review_data)
+        
+        return Response(data, status=status.HTTP_200_OK)
+    
+
+
+class PerformanceReviewDeleteView(generics.DestroyAPIView):
+    serializer_class = PerformanceReviewSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    
+    def get_queryset(self):
+        
+        review_pk = self.kwargs['pk']
+        return PerformanceReview.objects.filter(id=review_pk)
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+            
+            self.perform_destroy(instance)
+            return Response({'success': 'deleted review.'},status=status.HTTP_200_OK)
+        except PerformanceReview.DoesNotExist:
+            return Response({'error': 'Review not found.'}, status=status.HTTP_404_NOT_FOUND)
+
 # trying to make employee pagination
 
 class CustomEmployeePagination(PageNumberPagination):

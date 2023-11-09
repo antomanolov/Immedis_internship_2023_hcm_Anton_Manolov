@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from hcm_project.backend_api.views import DepartmentEmployeeList, DepartmentPaginatedEmployeeList, JobTitlesList, LoginView, PaycheckCreateView, PerformanceReviewView, RegisterView, TasksCreate, UserProfileUpdateView, get_logged_user_info, get_user_info, logout
+from hcm_project.backend_api.views import DepartmentEmployeeList, DepartmentPaginatedEmployeeList, HRReviewsView, JobTitlesList, LoginView, PaycheckCreateView, PerformanceReviewDeleteView, PerformanceReviewView, RegisterView, TasksCreate, UserProfileUpdateView, get_logged_user_info, get_user_info, logout
 
 
 urlpatterns = [
@@ -24,6 +24,8 @@ urlpatterns = [
 
         path('create-review/', PerformanceReviewView.as_view(), name='create review'),
         path('user-reviews/<int:pk>/', PerformanceReviewView.as_view(), name='create review'),
+        path('hr-reviews/', HRReviewsView.as_view(), name='logged HR reviews'),
+        path('delete-review/<int:pk>/', PerformanceReviewDeleteView.as_view(), name='delete review'),
 
         path('paginated-profiles/', DepartmentPaginatedEmployeeList.as_view()),
     ])),

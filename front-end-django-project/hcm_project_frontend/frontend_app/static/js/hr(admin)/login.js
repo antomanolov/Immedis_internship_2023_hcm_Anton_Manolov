@@ -23,15 +23,16 @@ document.getElementById("login-form").addEventListener("submit", function (event
     
     .then(response => response.json())
     .then(data => {
-        if (data.token) {
+        if (data.token && data.is_hr) {
             
             localStorage.setItem('authToken', data.token);
-
+            
+            
             window.location.href = '/';
             
         } else {
             // Handle login failure
-            console.error('Login failed.');
+            alert('Login failed. You are not admin!');
         }
     })
     .catch(error => {

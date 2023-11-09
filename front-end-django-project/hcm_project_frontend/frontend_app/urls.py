@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
-from hcm_project_frontend.bff_api.views import profiles_view
+from hcm_project_frontend.bff_api.views import profiles_view, reviews_view
 
 
 urlpatterns = [
@@ -15,4 +15,5 @@ urlpatterns = [
    path('add-review/', TemplateView.as_view(template_name='HR(admin)/middle-pages/add-review.html'), name='add review page'),
 
    path('profiles/', profiles_view,name='all profiles page'),
+   path('reviews/', TemplateView.as_view(template_name='HR(admin)/middle-pages/reviews.html'), name='all users reviews page')
 ]

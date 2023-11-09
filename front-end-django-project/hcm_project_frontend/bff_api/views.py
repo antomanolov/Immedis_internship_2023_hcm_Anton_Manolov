@@ -42,6 +42,7 @@ def get_current_user(request):
 
 # fetch the wanted user info for profile view/edit/delete purposes
 def get_user(request):
+    print(request.user)
     backend_url = f'http://localhost:8000/api/core/user-by-id/{request.headers.get("Search-User-ID")}/'
     response = requests.get(backend_url, headers=request.headers)
     if response.status_code == 200:
@@ -67,7 +68,9 @@ class LoginView(APIView):
         print(response.status_code)
         if response.status_code == 200:
             token = response.json().get('token')
-            return Response({'token': token}, status=status.HTTP_200_OK)
+            is_hr = response.json().get('is_hr')
+            print(is_hr)
+            return Response({'token': token, 'is_hr': is_hr}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -135,5 +138,26 @@ def profiles_view(request):
             'profile_data': data,
             
         }
-        
-    return render(request, 'HR(admin)/middle-pages/profiles.html', context)
+        return render(request, 'HR(admin)/middle-pages/profiles.html', context)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+
+def reviews_view(request):
+    backend_url = 'http://localhost:8000/api/core/hr-reviews/'
+    response = requests.get(backend_url, headers=request.headers)
+    if response.status_code == 200:
+        data = response.json()
+        return JsonResponse(data=data, status=status.HTTP_201_CREATED, safe=False)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+
+
+def delete_review(request):
+    backend_url = f'http://localhost:8000/api/core/delete-review/{request.headers.get("Review-id")}/'
+    response = requests.delete(backend_url, headers=request.headers)
+    if response.status_code == 200:
+        data = response.json()
+        return JsonResponse(data=data,status=status.HTTP_200_OK)
+    return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+    
+    

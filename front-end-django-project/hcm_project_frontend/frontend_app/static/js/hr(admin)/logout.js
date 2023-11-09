@@ -2,6 +2,11 @@ const wellcomeSign = document.querySelector('.wellcome')
 const logoutBtns = document.querySelectorAll('.logout-btn')
 const addEmployeeBtn = document.querySelector('.add-employee')
 const homeBtn = document.querySelector('.home-btn')
+const isHr = localStorage.getItem('is_hr')
+
+if (!isHr) {
+    alert()
+}
 
 homeBtn.addEventListener('click', ()=>{
     window.location.href = '/'
