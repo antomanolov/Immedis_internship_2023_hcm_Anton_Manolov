@@ -1,0 +1,265 @@
+{% extends "Employee/base.html" %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static "/css/employee-css/home.css" %}">
+    
+{% endblock custom_css%}
+{% block content %}
+<div class='middle'> 
+<!-- end of base html -->
+   
+        <div class="box">
+            <div class="box-title">
+                <h2>Attendance</h2>
+            </div>
+            <div class="checking">
+                <div class="check-in">
+                    <a href="">Check-In</a>
+                </div>
+                <div class="check-out">
+                    <a href="">Check-Out</a>
+                </div>
+            </div>
+            <div class="clock">
+                <h1>00:00:00</h1>
+            </div>
+            <div class="break-container">
+                <div class="break">
+                    <a href="">Break</a>
+                </div>
+                <div class="end-break">
+                    <a href="">End-Break</a>
+                </div>
+                
+            </div>
+            <div class="clock">
+                <h1>00:00:00</h1>
+            </div>
+        </div>
+        <!-- box 2 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Colleagues</h2>
+            </div>
+            <ul class="dep-col">
+                <li class="li-dep">
+                    <div class="online-status online"></div>
+                    <div>Andrew Webburn - JD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status offline"></div>
+                    <div>Maria Straus - SD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status offline"></div>
+                    <div>Anatholy Rublev - MD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status online"></div>
+                    <div>Stanimir Stoilov - JWD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status online"></div>
+                    <div>Sandra Madokk - SJD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status offline"></div>
+                    <div>John Constantine - PWD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status online"></div>
+                    <div>Sophia Webburn - SPD</div>
+                </li>
+                <li class="li-dep">
+                    <div class="online-status offline"></div>
+                    <div>Corry Jetson - CEO</div>
+                </li>
+            </ul>
+        </div>
+        <!-- box 3 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Pending Requests</h2>
+            </div>
+            <div class="requests">
+                <div class="request-box">
+                    <p><span class="request-top">Request type:</span><br>--- sick leave</p>
+                    <p><span class="request-top">Status:</span><br>--- Pending</p>
+                    <p><span class="request-top">Date of request:</span><br>--- 07.10.2023</p>
+                </div>
+                <div class="request-box">
+                    <p><span class="request-top">Request type:</span><br>--- casual leave</p>
+                    <p><span class="request-top">Status:</span><br>--- Pending</p>
+                    <p><span class="request-top">Date of request:</span><br>--- 07.12.2023</p>
+                </div>
+                
+                
+            </div>
+        </div>
+        <!-- box 4 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Announcements</h2>
+            </div>
+            <div class="requests">
+                <div class="request-box">
+                    <p class="request-top">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quod.</p>
+                    
+                </div>
+                <div class="request-box">
+                    <p class="request-top">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, facere!</p>
+                   
+                </div>
+                
+            </div>
+        </div>
+        <!-- box 5 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Paychecks</h2>
+            </div>
+            <div class="paychecks-grid">
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">JAN</p>
+                        <p>net salary: 2500</p>
+                    </div>
+                    <p>PAID ON: 01.02.2023</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">FEB</p>
+                        <p>net salary: 2505</p>
+                    </div>
+                    <p>PAID ON: 01.03.2023</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">MAR</p>
+                        <p>net salary: 2533</p>
+                    </div>
+                    <p>PAID ON: 01.04.2023</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">APR</p>
+                        <p>net salary: 2600</p>
+                    </div>
+                    <p>PAID ON: 01.05.2023</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">MAY</p>
+                        <p>net salary: 2700</p>
+                    </div>
+                    <p>PAID ON: 01.06.2023</p>
+                </div>
+            </div>
+        </div>
+        <!-- box 6 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Leave Ballance</h2>
+            </div>
+            <div class="leaves-grid">
+                <div class="leave">
+                    <p class="leave-type"><strong>Vacation</strong></p>
+                    <img src="/front-end/img/vacation-leave.png" alt="vacation leave img">
+                    <p><strong>27 days</strong></p>
+                </div>
+                <div class="leave">
+                    <p class="leave-type"><strong>Sick</strong></p>
+                    <img src="/front-end/img/sick-leave.png" alt="vacation leave img">
+                    <p><strong>10 days</strong></p>
+                </div>
+                <div class="leave">
+                    <p class="leave-type"><strong>TOIL</strong></p>
+                    <img src="/front-end/img/TOIL.png" alt="vacation leave img">
+                    <p><strong>2 days</strong></p>
+                    
+                </div>
+                <div class="leave">
+                    <p class="leave-type"><strong>Qualification</strong></p>
+                    <img src="/front-end/img/qualification upgrade.png" alt="vacation leave img">
+                    <p><strong>12 days</strong></p>
+                </div>
+            </div>
+        </div>
+        <!-- box 7 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Reviews</h2>
+            </div>
+            <div class="paychecks-grid">
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">JAN</p>
+                        <p>Review points: 10</p>
+                    </div>
+                    <p>REVIEWER: J. Gricham</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">FEB</p>
+                        <p>Review points: 8.5</p>
+                    </div>
+                    <p>REVIEWER: J. Gricham</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">MAR</p>
+                        <p>Review points: 7</p>
+                    </div>
+                    <p>REVIEWER: J. Gricham</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">APR</p>
+                        <p>Review points: 9</p>
+                    </div>
+                    <p>REVIEWER: J. Gricham</p>
+                </div>
+                <div class="paycheck">
+                    <div class="month-salary">
+                        <p class="request-top">MAY</p>
+                        <p>Review points: 9.5</p>
+                    </div>
+                    <p>REVIEWER: J. Gricham</p>
+                </div>
+            </div>
+            
+        </div>
+        <!-- box 8  -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Tasks</h2>
+            </div>
+            <div class="requests">
+                <div class="request-box">
+                    <p class="request-top">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quod.</p>
+                    <p class="deadline">Finished by: 10.12.23</p>
+                </div>
+                <div class="request-box">
+                    <p class="request-top">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, facere!</p>
+                    <p class="deadline">Finished by: 12.01.24</p>
+                </div>
+                
+            </div>
+        </div>
+        <!-- box 9 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Under Construction</h2>
+            </div>
+            
+        </div>
+        <!-- box 10 -->
+        <div class="box">
+            <div class="box-title">
+                <h2>Under Construction</h2>
+            </div>
+            
+        </div>
+    </div>    
+   
+{% endblock%}

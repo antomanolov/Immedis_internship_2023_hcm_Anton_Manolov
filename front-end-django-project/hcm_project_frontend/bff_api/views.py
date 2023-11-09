@@ -69,7 +69,7 @@ class LoginView(APIView):
         if response.status_code == 200:
             token = response.json().get('token')
             is_hr = response.json().get('is_hr')
-            print(is_hr)
+            
             return Response({'token': token, 'is_hr': is_hr}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
