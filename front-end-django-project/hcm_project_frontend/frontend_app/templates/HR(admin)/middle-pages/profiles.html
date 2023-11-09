@@ -2,12 +2,16 @@
 {% load static %}
 {% block custom_css %}
     <link rel="stylesheet" href="{% static "/css/hr(admin)-css/profiles.css" %}">
-    <script src="{% static "/js/hr(admin)/index.js" %}" defer></script>
+    
 {% endblock custom_css%}
 {% block content %}
 
     <div class="middle">
-     {% for dep in profile_data %}
+        <div class="search-div">
+            <input type="text" id="searchInput" placeholder="Search by name">
+        </div>
+        
+        {% for dep in profile_data %}
         
         <h1 class="profile-dep">{{dep.name}}</h1>
         {% if dep.employees %}
@@ -19,15 +23,17 @@
                     <div class="img">
                         <img src="{% static "/img/avatar.png" %}" alt="avatar png">
                     </div>
-                    <p>{{emp.first_name}} {{emp.last_name}}</p>
+                    <!-- I solved the worker id problem by saving the id from the model and then loaded the javascript at the end of the code -->
+                    <p><a href="" class="user-id" data-user-id="{{emp.id}}">{{emp.first_name}} {{emp.last_name}}</a></p>
                 </div>
                 
                 <p>Seniority: {{emp.seniority}}</p>
                 <p>Date hired: {{emp.date_of_hire}}</p>
+                <p>Email: {{emp.email}}</p>
+                <p>Telephone: {{emp.telephone_number}}</p>
+                <p>Location: {{emp.location}}</p>
                 <div class="edit-del-btns">
-                    <a href="" class= "edit">Edit</a>
-                    <a href="" class= "delete">Delete</a>
-                    <a href="" class= "view">View</a>
+                    
                 </div>
             </div>
              {% comment %} if I have time to implement next page or more pages! {% endcomment %}
@@ -42,5 +48,5 @@
         {% endfor %}
     </div>
 
-    
+<script src="{% static "/js/hr(admin)/profiles.js" %}" defer></script>
 {% endblock content%}
