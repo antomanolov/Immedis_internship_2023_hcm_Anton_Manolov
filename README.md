@@ -1,7 +1,7 @@
 
 # Human Capital Management App Project by Anton Manolov
 
-## The project is 2 major projects with 3 aps (1 frontend project with BFF API) and 1 backend API. The idea of the project was to have 2 UIs. One that is accessible for the HR(admin) and one that is made for the Employee. 
+## The Web Application  is made with 2 Django projects with 3 aps in them (1 frontend project with BFF API) and 1 backend API. The idea of the project was to have 2 UIs. One that is accessible for the HR(admin) and one that is made for the Employee. 
 
 ## What is done in the project:
 ### General login/logout system that is shared for the HRs and Employees
@@ -14,7 +14,7 @@
 ### 5 Also they can see up to 10 users from each department, and search their details if necessary.
 ### 6 Currently, no one except HR can log into the site becouse of the is_hr atribute in the model.
 
-## The employee for that moment doen't have functional UI, it is only static, but model wise everything is ready to be connected through the APIs.
+### The employee for that moment doen't have functional UI, it is only static, but model wise everything is ready to be connected through the APIs.
 
 ## Things that I am proud of that I've neved done before:
 
