@@ -1,6 +1,7 @@
 #Django imports
 from django.contrib.auth import login
 #DRF imports
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
@@ -53,7 +54,7 @@ class LoginView(ObtainAuthToken):
 
 class DepartmentEmployeeList(APIView):
     def get(self, request):
-        # excluding the HRs becouse they are administration, and only the superuser will make changes to them
+        # excluding the HRs because they are administration, and only the superuser will make changes to them
         # later cna be revisited
         departments = Department.objects.exclude(name='HR').all()
         data = []
@@ -281,7 +282,7 @@ class PaycheckCreateView(generics.CreateAPIView):
     
 class PerformanceReviewView(generics.CreateAPIView):
     serializer_class = PerformanceReviewSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
     def get_queryset(self):
@@ -330,3 +331,39 @@ class PerformanceReviewView(generics.CreateAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+# trying to make employee pagination
+
+class CustomEmployeePagination(PageNumberPagination):
+    # if I have time to implement next page or more pages!
+    page_size = 10  # Number of employees per page
+    page_size_query_param = 'employee_page_size'
+    max_page_size = 4
+
+
+class DepartmentPaginatedEmployeeList(APIView):
+    pagination_class = CustomEmployeePagination
+    def get(self, request):
+        # excluding the HRs because they are administration, and only the superuser will make changes to them
+        # later cna be revisited
+        departments = Department.objects.exclude(name='HR').all()
+        data = []
+
+        for department in departments:
+            department_data = {
+                'id': department.id,
+                'name': department.name,
+                'employees': []
+            }
+
+            employees = AppUser.objects.filter(department=department)
+            employee_paginator = CustomEmployeePagination()
+            paginated_employees = employee_paginator.paginate_queryset(employees, request)
+
+            employee_serializer = EmployeeSerializer(paginated_employees, many=True)
+            
+            department_data['employees'] = employee_serializer.data
+            
+            data.append(department_data)
+            
+        return Response(data, status=status.HTTP_200_OK)

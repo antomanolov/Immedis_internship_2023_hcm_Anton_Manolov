@@ -1,5 +1,6 @@
 import json
 from django.http import JsonResponse
+from django.shortcuts import render
 import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -123,3 +124,16 @@ def add_review(request):
         data = response.json()
         return JsonResponse(data=data, status=status.HTTP_201_CREATED)
     return JsonResponse({"error": "Failed to fetch employee data from the backend API."}, status=403)
+
+def profiles_view(request):
+    backend_url = f'http://localhost:8000/api/core/paginated-profiles/'
+    response = requests.get(backend_url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        context = {
+            'profile_data': data,
+            
+        }
+        
+    return render(request, 'HR(admin)/middle-pages/profiles.html', context)

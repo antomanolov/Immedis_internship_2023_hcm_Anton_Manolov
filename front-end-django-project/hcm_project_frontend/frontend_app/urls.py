@@ -1,6 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
+from hcm_project_frontend.bff_api.views import profiles_view
+
 
 urlpatterns = [
    path('', TemplateView.as_view(template_name= 'HR(admin)/middle-pages/index.html'), name='index page'),
@@ -10,5 +12,7 @@ urlpatterns = [
    path('edit-user/', TemplateView.as_view(template_name='HR(admin)/middle-pages/edit-employee.html'), name='edit user page'),
    path('add-task/', TemplateView.as_view(template_name='HR(admin)/middle-pages/add-task.html'), name='add task page'),
    path('add-paycheck/', TemplateView.as_view(template_name='HR(admin)/middle-pages/submit-paycheck.html'), name='add paycheck page'),
-   path('add-review/', TemplateView.as_view(template_name='HR(admin)/middle-pages/add-review.html'), name='add review page')
+   path('add-review/', TemplateView.as_view(template_name='HR(admin)/middle-pages/add-review.html'), name='add review page'),
+
+   path('profiles/', profiles_view,name='all profiles page'),
 ]
